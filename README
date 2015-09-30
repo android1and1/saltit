@@ -19,3 +19,17 @@ i////// store mile
 stonemile
 milestone
 which is right,i think the last:milestone.
+
+
+当前日期: 2015/09/30 周三 
+输入新日期: (年月日) 
+hp-pc input above some lines.
+from master,from rpi,run 'git checkout --orphan saltrepo'
+then,in another directory,run 'git clone --bare --branch=saltrepo /home/pi/saltit',get a auto-cream directory,named 'saltrepo.git'
+
+//
+then,from remote computer,let us say,it is hp pc,do:
+git clone pi@192.168.0.125:~/saltit.git'
+
+we got a bare repo and has push-power clients(notice the 's'!)
+we can commits from anywhere afterward.
