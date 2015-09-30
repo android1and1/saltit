@@ -1,0 +1,21 @@
+# readme of package,totally
+# init dirs
+# prepare constant files:
+	md5sum_0,md5sum_01....
+	okay_0,okay01...
+# tokenfile = token file
+tokenfile is encoded_okaystr_binary
+sample(./share/okaies/encoded_okay-11): #client will see 'tokenfile'
+	Salted__ÑØ~uÙÝ+ý‚Õñ—{Ô•â»M®øsÀü
+above means:'okay' be coded,key file is 11's md5sum.
+decode it,run:
+	openssl enc -d -aes256 -in tokenfile -kfile ./share/md5s/md5sum_11 -out okay.txt 
+
+
+init: first run "first.sh"
+add new user to editors list.
+
+i////// store mile
+stonemile
+milestone
+which is right,i think the last:milestone.

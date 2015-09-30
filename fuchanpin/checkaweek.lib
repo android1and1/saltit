@@ -1,0 +1,161 @@
+# file:checkaweek.lib
+# use a binary digit expr one week of 'kaoqin' status.
+# status 0 0000000  means OK,no any problem. The first '0' means Nothing,but binary digit has 8 bit,so first bit will say it is 'zhanweifu'.
+# status 0 1000000  means Monday,no good.
+# etc.. and so on so on.
+
+# But...A Kaoqin program will handle at least a week's data.
+# We can fenjie it.
+# collect all days status.like weeks=($week1,$week2,$week3,$week4) ,it just a ordinary shell arry.
+# each item(example,we say it is week1),is a binary digits,example:2#01010000.the first digit always is '0'.the reason i have told at above.
+# so,actually,we collect an arry:
+#	(2#01000000,2#00100000,2#00010000,2#00000001)
+# means:First Week,Moday No Record;Second Week,Tuesday no record,the third week,Wednesday no record,and the Forth week,Sunday no record.
+
+# How to create the status's data(a binary digits)?
+# It is exceel this script,but i can simple demonstrate it:
+# (At Client Program) give a record to a str
+# 	if [[ $output == 'n' ]] # the html page post form,one element is a 'output="n"'
+#	then
+#		echo 	
+		
+declare -a baseweekdays=(1 2 3 4 5 6 7)
+echo ${baseweekdays[@]}
+echo ${report[@]}
+#!/bin/bash
+# split a month display digits into 4 weeks(4 lines)
+baseweekdays=(01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31)
+febweekdays=(${baseweekdays[@]:0:28})
+longweekdays=(${baseweekdays[@]})
+shortweekdays=(${baseweekdays[@]:0:30})
+weekmeans=(Su Mo Tu We Th Fr Sa)
+
+# help method(function)
+_help(){
+#$1: 'long' | 'short' | 'feb'
+	declare -a thisweekdays
+	case $1 in
+	'long')
+		thisweekdays=(${baseweekdays[@]})
+		;;
+	'short')
+		thisweekdays=(${baseweekdays[@]:0:30})
+		;;
+	'feb')
+		thisweekdays=(${baseweekdays[@]:0:28})
+		;;
+	*)
+		echo ' ONLY {long|short|feb} Argument Is Valid.'
+		exit 1
+	esac
+
+	# now we know which stat of this month
+	length=${#thisweekdays[*]}                      
+	declare -i i=1
+
+	while [ $i -le ${length} ]	
+	do
+		if [[ $i == 1 ]]
+		then
+			echo -en " "${thisweekdays[$i-1]}" "
+		
+		else
+			let ii=$i%7
+			if [[ $ii == 0 ]]
+			then 
+				echo -en ${thisweekdays[$i-1]}"\n "
+			else
+				echo -en ${thisweekdays[$i-1]}" "
+			fi
+		fi
+		let "i+=1"
+	done
+	echo 
+}
+
+
+# new start
+
+#function 'checkaweek' gets $1 as a digits-str from console,and display a signal to user,a week only. 
+function checkaweek(){
+	if test $# -ne 1
+	then
+		echo "Usage: $0 STAT_NUM"
+		exit 2
+	fi
+
+	for i in 0 1 2 3 4 5 6 7
+	do
+		let "Q${i}=2#10000000>>${i}"
+	done
+	# think this digit,2#00100000 (means:Tuesday no record)
+	let status_num=$1
+	let initnumber=0
+	let temp_result=0
+	#report is an arry what expr a week-day,if "o o o o o o o"(7o)means from Monday to Sunday,record are good.
+	declare -a report=(o o o o o o o) 
+
+	while [[ $initnumber < 8 ]]
+	do
+		case $initnumber in
+		1)
+			let "temp_result = status_num & Q1"
+			if [[ $temp_result ==  $Q1 ]]
+			then
+				echo "means:Monday No Record."
+				report[0]='x'
+			fi
+				;;
+		2)
+			let "temp_result = status_num & Q2"
+			if [[ $temp_result ==  $Q2 ]]
+			then
+				echo "means:Tuesday No Record."
+				report[1]='x'
+			fi
+				;;
+		3)
+			let "temp_result = status_num & Q3"
+			if [[ $temp_result ==  $Q3 ]]
+			then
+				echo "means:Wednesday No Record."
+				report[2]='x'
+			fi
+				;;
+		4)
+			let "temp_result = status_num & Q4"
+			if [[ $temp_result ==  $Q4 ]]
+			then
+				echo "means:Thursday No Record."
+				report[3]='x'
+			fi
+				;;
+		5)
+			let "temp_result = status_num & Q5"
+			if [[ $temp_result ==  $Q5 ]]
+			then
+				echo "means:Friday No Record."
+				report[4]='x'
+			fi
+				;;
+		6)
+			let "temp_result = status_num & Q6"
+			if [[ $temp_result ==  $Q6 ]]
+			then
+				echo "means:Saturday No Record."
+				report[5]='x'
+			fi
+				;;
+		7)
+			let "temp_result = status_num & Q7"
+			if [[ $temp_result ==  $Q7 ]]
+			then
+				echo "means:Sunday No Record."
+				report[6]='x'
+			fi
+			;;
+		esac
+
+		let "initnumber+=1" 
+	done
+}

@@ -1,0 +1,57 @@
+* How to around TDD frame,deploy your main,functions
+in main,sample is currently project -- saltit
+it is saltit.sh we said.
+in main,include other helpful functions,like this:
+
+	for i in ./tests/*.sh
+	do
+		. $i
+	done
+
+
+* How to around TDD frame,design your test
+before main() invoke any function(test_XXX),we wrriten it in ./tests/functions directory,
+and add test-frame element,DEBUG level,DEBUGTITLE,DEBUG-echo DEBUG-invoke-inline etc..
+a sample is :
+
+1	. /home/pi/saltit/scripts/tests/base.sh
+	DEBUG=2
+	#-------------Tropic of Cancer
+	split_if_ness(){
+		if [ ! -f "$1" ]
+		then
+			echo $1 is not exists
+			return 1
+		fi
+		# if blocks too many,split,else do nothing.
+		# $1 is file
+		declare -i size
+		# "ls -s"  will got file's size,unit is "kb"
+		display=$(ls -s "$1" | awk '{print $1;}')
+		
+		(( size=${display}/1024 ))
+2		test $DEBUG -gt 1 && echo $DEBUGTITLE" :size=="$size
+		
+		if [[ size >  4 ]]   # rember!! in '[[...]]' can NOT use $size,must 'size' only!!
+		then
+			
+			test $DEBUG -gt 1 && echo "$DEBUGTITLE  "prepare splitting\! 
+			split -b 4M "$1" 
+		else
+			echo "$DEBUGTITLE"" :why?"
+		fi
+	}
+	#-------------Tropic of Capricorn
+
+3	if [[ DEBUG > 1 ]]
+	then
+		split_if_ness /home/pi/saltit/scripts/tests/abigfile
+		split_if_ness /home/pi/ssaltit/scripts/tests/abigfile # not exists
+	fi
+
+above,step1 is include test function's base(test frame) file
+step2 :how insert echo test
+step3 :add a judge,so,if function is production-function,just change the second line "DEBUG=2" to "DEBUG=0"(no debug),and invoke() time is 0.
+
+* how test all function in a inline command.
+it is a for loop.do this: " cd HERE;for i in ./*.sh;do bash $i;done "

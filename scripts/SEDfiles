@@ -1,0 +1,11 @@
+# collect some sed scripts.
+
+# $1 argument is our filename,which dived from saltit.sh(main sh file).
+sed -i -e '1h' -e '$G' -e '$y/\(\)\{/\ \ \ /' "$1"
+
+sed -i -e '/tropic\ of/r func_1' "$1"
+
+{
+  sed -n -e '/tropic/,/tropic/p' tests/test_XXX > functions/XXX.func
+  sed -i -e '1d' -e '$d' functions/XXX.func
+}
