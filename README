@@ -33,3 +33,7 @@ git clone pi@192.168.0.125:~/saltit.git'
 
 we got a bare repo and has push-power clients(notice the 's'!)
 we can commits from anywhere afterward.
+
+
+//Thu Oct  8 09:09:02 CST 2015
+from raspi(respoty itself),make a comment.
