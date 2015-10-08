@@ -6,8 +6,8 @@
 # -- empty,normal size,too big(size).
 # -- is a directory or a file.
 # 
-
-. /home/pi/saltit/scripts/functions/base 2>/dev/null
+# !import! if product already,comment the below line.
+declare -i DEBUG=2
 
 function daimecheck(){
 		
@@ -28,7 +28,8 @@ function daimecheck(){
 		return 1
 	fi
 }
-if [[ DEBUG > 1 ]]
+if [[ $DEBUG > 1 ]]
 then
+	. /home/pi/Workspace/saltit/scripts/functions/base 2>/dev/null
 	daimecheck /home/pi/saltit/scripts/functions 
 fi

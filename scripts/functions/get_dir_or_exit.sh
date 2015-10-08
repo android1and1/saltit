@@ -1,7 +1,8 @@
 #!/bin/bash
 # filename get_dir_or_exit.sh
+# !import! if product already,comment the below line.
+declare -i DEBUG=2
 
-. /home/pi/saltit/scripts/functions/base
 
 function _help_of_find(){
 	# this helpful func return a dir name.
@@ -67,8 +68,9 @@ function get_dir_or_exit(){
 	return 0
 }
 
-if [[ DEBUG > 1 ]]
+if [[ $DEBUG > 1 ]]
 then
+	. /home/pi/Workspace/saltit/scripts/functions/base
 	#global var: WORKINGDIR
 	WORKINGDIR='no yet now'
 	mkdir -p /home/pi/saltit/ddk1/

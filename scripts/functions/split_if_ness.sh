@@ -1,6 +1,6 @@
 #!/bin/bash
-
-. /home/pi/saltit/scripts/functions/base 2>/dev/null
+# !import! if product already,comment the below line.
+declare -i DEBUG=2
 
 #-------------Tropic of Cancer
 split_if_ness(){
@@ -43,7 +43,8 @@ split_if_ness(){
 }
 
 #-------------Tropic of Capricorn
-if [[ DEBUG > 1 ]]
+if [[ $DEBUG > 1 ]]
 then
-	split_if_ness /home/pi/saltit/scripts/functions/abigfile /home/pi/saltit/scripts/temp
+	. /home/pi/Workspace/saltit/scripts/functions/base 2>/dev/null
+	split_if_ness /home/pi/Workspace/saltit/scripts/functions/abigfile /home/pi/saltit/scripts/temp
 fi

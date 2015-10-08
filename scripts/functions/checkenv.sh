@@ -1,7 +1,8 @@
 #!/bin/bash
-. /home/pi/saltit/scripts/functions/base 2>/dev/null
+# !import! if produce already,comment the below line.
+declare -i DEBUG=2
+
 function checkenv(){
-	[[ DEBUG > 1 ]]
 	if [ ! -d "./share" ]
 	then
 		[[ DEBUG > 1 ]] && echotest "no share directory."
@@ -16,8 +17,9 @@ function checkenv(){
 	return 0
 }
 
-if [[ DEBUG > 1 ]]
+if [[ $DEBUG > 1 ]]
 then
+	. /home/pi/Workspace/saltit/scripts/functions/base 2>/dev/null
 	checkenv
 	echotest "\$?==$?"
 fi

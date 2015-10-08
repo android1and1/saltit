@@ -1,6 +1,7 @@
 #!/bin/bash
+# !import! if product already,comment the below line.
+declare -i DEBUG=2
 
-. /home/pi/saltit/scripts/functions/base
 
 # ------------- the tropic of cancer
 upload_all_except_ignores(){
@@ -8,6 +9,9 @@ upload_all_except_ignores(){
 	# check if have a .ignore.get its content.
 	# and re-list all files,they need be encryed,except files in .ignore.
 	# return the list.
+
+	# first we will check if "$1" is given,if not , if "./uploads" is exists
+	[[ DEBUG > 1 ]] && echotest "\$1==${1}"
 
 
 	#ignores keeps some files that no need be encryed.
@@ -50,7 +54,17 @@ upload_all_except_ignores(){
 	return 0
 }
 # ------------- the tropic of capricorn 
-if [[ DEBUG > 1 ]] 
+if [[ $DEBUG > 1 ]] 
 then
-	upload_all_except_ignores  "/home/pi/saltit/uploads/"
+	. /home/pi/Workspace/saltit/scripts/functions/base
+	# make a temprary dir
+	TEMPD="/home/pi/Workspace/saltit/uploads"
+	mkdir -p "$TEMPD"	
+	touch "$TEMPD"/.ignores 
+	 
+	# real test...
+	upload_all_except_ignores "$TEMPD"
+	sleep 1
+	# do homekeeping
+	rm -rf "$TEMPD"
 fi

@@ -2,22 +2,29 @@
 # interaction encrypt-decrpyt manager script:saltit.sh
 # edited by Alan 2015-9-28
 
-# first,need include our TDD Frame
-. /home/pi/saltit/scripts/functions/base
-
 
 # Global Variables
 # 1
-# 	"WORKINGDIR"
-WORKINGDIR="no yet"
+# 	"DAEMONDIR"
 # 2
+#	"WORKINGDIR"
+# "WORKINGDIR" is a temprary global varible,used by function "get_dir_or_exit.sh"
+# 3
 #	"DEBUG"
 # override variable:DEBUG if nessary,in produce-process,set DEBUG=0 
-# if we dont do this,the debug infos will appears in console.
+
+# the path of the dir,is by your env,override it till meet your need.
+DAEMONDIR="/home/pi/Workspace/saltit"
+# dummy a variable's value.
+WORKINGDIR="No Yet"
+
+# include "base" first,then re-define "DEBUG"(from '2' to '0')
+. "$DAEMONDIR""/scripts/functions/base"
+
 DEBUG=0
 
 # -----------------  Tropic of Cancer
-for i in /home/pi/saltit/scripts/functions/*.sh
+for i in "$DAEMONDIR"/scripts/functions/*.sh
 do
 	echo 'function=='"$i"
 	. $i 2>/dev/null
@@ -61,7 +68,7 @@ function main(){
 			;;
 		2)
 			echo -en $title21
-			#daimecheck	
+			get_dir_or_exit	
 			if [ $? -eq 0 ]
 			then
 				let step+=1
@@ -87,3 +94,13 @@ function main(){
 }
 #at last,invoke main()
 main
+
+
+# include bash scripts
+#base
+#checkenv.sh
+#continue_or_exit_whole.sh
+#daimecheck.sh
+#get_dir_or_exit.sh
+#split_if_ness.sh
+#upload_all_except_ignores.sh

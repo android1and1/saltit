@@ -1,5 +1,6 @@
 #!/bin/bash
-. /home/pi/saltit/scripts/functions/base
+# !import!  if product already,comment below line!
+declare -i DEBUG=2
 
 function continue_or_exit_whole(){
 	# should test if global variable:"step" is exists.
@@ -13,12 +14,12 @@ function continue_or_exit_whole(){
 	select iwant in "exit" "rework"
 	do
 
-		case $iwant in 
-		exit)
+		case $REPLY in 
+		1)
 			let step=44
 			break
 			;;
-		rework)
+		2)
 			let step=1
 			break
 			;;
@@ -30,7 +31,9 @@ function continue_or_exit_whole(){
 	done
 }
 
-if [[ DEBUG > 1 ]] 
+if [[ $DEBUG > 1 ]] 
 then
+	. /home/pi/Workspace/saltit/scripts/functions/base
+	step=0
 	continue_or_exit_whole
 fi
