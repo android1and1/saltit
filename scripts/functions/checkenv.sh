@@ -2,7 +2,8 @@
 
 # first of first,include abs root(directory) name.
 # get a global variable -- "ABSROOT"
-. ../../conf/abs.conf
+cur_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
+. $cur_dir/conf/abs.conf
 
 # !import! if produce already,comment the below line.
 declare -i DEBUG=2
@@ -24,7 +25,8 @@ function checkenv(){
 
 if [[ $DEBUG > 1 ]]
 then
-	. "${ABSROOT}""/base"  2>/dev/null
+#	. "${ABSROOT}""/base"  2>/dev/null
+	. "${ABSROOT}""/base"  
 	checkenv
 	echotest "\$?==$?"
 	huali

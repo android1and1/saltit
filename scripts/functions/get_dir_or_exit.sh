@@ -3,7 +3,8 @@
 
 # first of first,include abs root(directory) name.
 # get a global variable -- "ABSROOT"
-. ../../conf/abs.conf
+cur_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
+. $cur_dir/conf/abs.conf
 
 # !import! if product already,comment the below line.
 declare -i DEBUG=2
