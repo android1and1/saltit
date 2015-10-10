@@ -1,4 +1,8 @@
 #!/bin/bash
+# first of first,include abs root(directory) name.
+# get a global variable -- "ABSROOT"
+. ../../conf/abs.conf
+
 # !import! if product already,comment the below line.
 declare -i DEBUG=2
 
@@ -45,6 +49,13 @@ split_if_ness(){
 #-------------Tropic of Capricorn
 if [[ $DEBUG > 1 ]]
 then
-	. /home/pi/Workspace/saltit/scripts/functions/base 2>/dev/null
-	split_if_ness /home/pi/Workspace/saltit/scripts/functions/abigfile /home/pi/saltit/scripts/temp
+	. ${ABSROOT}/base 2>/dev/null
+	TESTDIR="${ABSROOT}/temp"
+	mkdir -p $TESTDIR
+
+	split_if_ness ./abigfile ${TESTDIR}
+	sleep 5
+	# do house keeping.
+	rm -rf $TESTDIR
+	echo 'removed test data(s).'
 fi

@@ -1,4 +1,9 @@
 #!/bin/bash
+
+# first of first,include abs root(directory) name.
+# get a global variable -- "ABSROOT"
+. ../../conf/abs.conf
+
 # in this func,we want to do what?
 # -- do these,multi f.
 # we want check what?
@@ -30,6 +35,6 @@ function daimecheck(){
 }
 if [[ $DEBUG > 1 ]]
 then
-	. /home/pi/Workspace/saltit/scripts/functions/base 2>/dev/null
-	daimecheck /home/pi/saltit/scripts/functions 
+	. ${ABSROOT}/base 2>/dev/null
+	daimecheck  ${ABSROOT} 
 fi

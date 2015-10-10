@@ -1,4 +1,9 @@
 #!/bin/bash
+
+# first of first,include abs root(directory) name.
+# get a global variable -- "ABSROOT"
+. ../../conf/abs.conf
+
 # !import! if produce already,comment the below line.
 declare -i DEBUG=2
 
@@ -19,7 +24,19 @@ function checkenv(){
 
 if [[ $DEBUG > 1 ]]
 then
-	. /home/pi/Workspace/saltit/scripts/functions/base 2>/dev/null
+	. "${ABSROOT}""/base"  2>/dev/null
 	checkenv
 	echotest "\$?==$?"
+	huali
+	mkdir -p ./share
+	touch ./.ignores
+	checkenv
+	echotest "\$?==$?"
+	huali
+	rm ./.ignores
+	checkenv
+	echotest "\$?==$?"
+	# do home keeping
+	sleep 2
+	rm -rf ./share
 fi

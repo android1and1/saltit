@@ -1,5 +1,10 @@
 #!/bin/bash
 # filename get_dir_or_exit.sh
+
+# first of first,include abs root(directory) name.
+# get a global variable -- "ABSROOT"
+. ../../conf/abs.conf
+
 # !import! if product already,comment the below line.
 declare -i DEBUG=2
 
@@ -7,7 +12,7 @@ declare -i DEBUG=2
 function _help_of_find(){
 	# this helpful func return a dir name.
 	# fatastic,only one time wrriten it,no error!
-	thesedirs=$( find /home/pi/saltit/ -type f -regex '.*/\.?token$' -exec dirname {} \;)
+	thesedirs=$( find ${ABSROOT} -type f -regex '.*/\.?token$' -exec dirname {} \;)
 	thedir=$( echo $thesedirs | awk '{print $1;}' ) 
 	if test -d "$thedir"
 	then
@@ -70,21 +75,21 @@ function get_dir_or_exit(){
 
 if [[ $DEBUG > 1 ]]
 then
-	. /home/pi/Workspace/saltit/scripts/functions/base
+	. ${ABSROOT}/base 2>/dev/null
 	#global var: WORKINGDIR
-	WORKINGDIR='no yet now'
-	mkdir -p /home/pi/saltit/ddk1/
-	mkdir -p /home/pi/saltit/ddk2/
-	touch /home/pi/saltit/ddk1/.token
-	touch /home/pi/saltit/ddk2/token
+	WORKINGDIR='no_yet_now'
+	mkdir -p ${ABSROOT}/ddk1/
+	mkdir -p ${ABSROOT}/ddk2/
+	touch ${ABSROOT}/ddk1/.token
+	touch ${ABSROOT}/ddk2/token
 #	_help_of_find
 	get_dir_or_exit
 	echotest "\$?==$?"
 	echotest "$WORKINGDIR"
 	
 #clean
-	rm -rf /home/pi/saltit/ddk1/
-	rm -rf /home/pi/saltit/ddk2/
+	rm -rf ${ABSROOT}/ddk1/
+	rm -rf ${ABSROOT}/ddk2/
 	unset WORKINGDIR
 fi
 

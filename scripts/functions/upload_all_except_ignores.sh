@@ -1,4 +1,9 @@
 #!/bin/bash
+
+# first of first,include abs root(directory) name.
+# get a global variable -- "ABSROOT"
+. ../../conf/abs.conf
+
 # !import! if product already,comment the below line.
 declare -i DEBUG=2
 
@@ -79,7 +84,7 @@ upload_all_except_ignores(){
 # ------------- the tropic of capricorn 
 if [[ $DEBUG > 1 ]] 
 then
-	. /home/pi/Workspace/saltit/scripts/functions/base
+	. ${ABSROOT}/base 2>/dev/null
 	
 	# first ,client(programer) forgot append the dir-argument
 	upload_all_except_ignores
@@ -96,7 +101,8 @@ then
 	huali
 
 	# make a temprary dir
-	TEMPD="/home/pi/Workspace/saltit/uploads"
+	#TEMPD="/home/pi/Workspace/saltit/uploads"
+	TEMPD=`dirname ${ABSROOT}`/uploads
 	mkdir -p "$TEMPD"	
 	touch "$TEMPD""/"{a,b,c,d,A,B,C,D}.txt
 	touch "$TEMPD"/.ignores 

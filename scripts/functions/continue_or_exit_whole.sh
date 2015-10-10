@@ -1,4 +1,9 @@
 #!/bin/bash
+
+# first of first,include abs root(directory) name.
+# get a global variable -- "ABSROOT"
+. ../../conf/abs.conf
+
 # !import!  if product already,comment below line!
 declare -i DEBUG=2
 
@@ -33,7 +38,7 @@ function continue_or_exit_whole(){
 
 if [[ $DEBUG > 1 ]] 
 then
-	. /home/pi/Workspace/saltit/scripts/functions/base
+	. ${ABSROOT}/base 2>/dev/null
 	step=0
 	continue_or_exit_whole
 fi
