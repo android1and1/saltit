@@ -5,7 +5,8 @@
 
 # Global Variables
 # 1
-# 	"DAEMONDIR"
+# 	"ABSROOT":it is a conf file,within saltit/conf/ directory,see which os type,will return a varible 'ABSROOT' meet your real one.
+
 # 2
 #	"WORKINGDIR"
 # "WORKINGDIR" is a temprary global varible,used by function "get_dir_or_exit.sh"
@@ -14,20 +15,24 @@
 # override variable:DEBUG if nessary,in produce-process,set DEBUG=0 
 
 # the path of the dir,is by your env,override it till meet your need.
-DAEMONDIR="/home/pi/Workspace/saltit"
+# in rpi,it is /home/pi/Workspace/saltit/scripts/functions/.
+# in MinGW,it is /home/Users/Alan/tempP/saltit/(etc..)
+cur_dir=$( cd $( dirname $0 )  &&  cd ../conf && pwd -P )
+. $cur_dir/abs.conf
+
+# then include 'base' enviroment.
+. $ABSROOT/base 2>/dev/null
 # dummy a variable's value.
 WORKINGDIR="No Yet"
 
 # include "base" first,then re-define "DEBUG"(from '2' to '0')
-. "$DAEMONDIR""/scripts/functions/base"
-
+. ${ABSROOT}/base 2>/dev/null
 DEBUG=0
 
 # -----------------  Tropic of Cancer
-for i in "$DAEMONDIR"/scripts/functions/*.sh
+for i in "${ABSROOT}"/*.sh
 do
-	echo 'function=='"$i"
-	. $i 2>/dev/null
+	. $i # 2>/dev/null 
 done
 # -----------------  Tropic of Capricorn 
 
@@ -92,15 +97,6 @@ function main(){
 		
 	done
 }
+
 #at last,invoke main()
 main
-
-
-# include bash scripts
-#base
-#checkenv.sh
-#continue_or_exit_whole.sh
-#daimecheck.sh
-#get_dir_or_exit.sh
-#split_if_ness.sh
-#upload_all_except_ignores.sh

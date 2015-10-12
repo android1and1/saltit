@@ -6,7 +6,7 @@ cur_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 . $cur_dir/conf/abs.conf
 
 # !import! if produce already,comment the below line.
-declare -i DEBUG=2
+# declare -i DEBUG=2
 
 function checkenv(){
 	if [ ! -d "./share" ]
