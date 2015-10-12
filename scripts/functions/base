@@ -1,14 +1,13 @@
 #!/bin/bash
 
 # the base of all test-function.
-# in their first part,include this by:
-# " . /path/to/the/scripts/functions/base 2>/dev/null "
 # can override below 2 vars till meet your needs.
 # DEBUG level 0 -- No debug 
 # DEBUG level 1 -- simple debug info
 # DEBUG level 2 -- more detail about debug info
 
 declare -i DEBUG=2
+
 # if fall into product-time,comment above and uncomment below line:
 # declare -i DEBUG=0
 FILENAME=$(basename $0)
