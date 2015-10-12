@@ -13,25 +13,22 @@ split_if_ness(){
 	# $2 is a directory store splitted files.
 	if [ ! -f "$1" -o ! -d "$2" ] 
 	then
-		[[ DEBUG > 1 ]] && echotest "$1 or $2 not good enough to handling."
+		[[ $DEBUG > 1 ]] && echotest "$1 or $2 not good enough to handling."
 		return 1
 	fi
-	# if blocks too many,split,else do nothing.
-	# $1 is file
+
 	declare -i size
-	# "ls -s"  will got file's size,unit is "kb"
-	display=$(ls -s "$1" | awk '{print $1;}')
+	declare -i display=$(ls -l "$1" | awk '{print $5;}')
 	
-	(( size=${display}/1024 ))
-	[[ DEBUG > 1 ]] && echotest "its size is:""$size""M bytes."
+	# /1024/1024 change ll output from bytes to Million Bytes.
+	(( size=${display}/1024/1024 ))
+
+	[[ $DEBUG > 1 ]] && echotest "its size is:""$size"" Mbytes."
 	
-	if [[ size >  4 ]]   # rember!! in '[[...]]' can NOT use $size,must 'size' only!!
-	then
-		
-		[[ DEBUG > 1 ]] && echotest "prepare splitting!"
+	if [ $size -gt  4 ];then
+		[[ $DEBUG > 1 ]] && echotest "prepare splitting!"
 		declare basenameofdollar1=$( basename $1 )
 		split -d -b 4M "$1" 
-		sleep 1
 
 		# rename right now!
 		for name in x*
@@ -41,9 +38,13 @@ split_if_ness(){
 #			echo 2:2:${2}/${basenameofdollar1}${name:1}
 		done
 		 		
+		# show what files in temp directory. 
+		ls -lh ${2}/${basenameofdoallar1}	
+		sleep 3
 		
 	else
-		echo "$DEBUGTITLE"" :why?"
+		echo \$size==$size\.
+		echo "$DEBUGTITLE"" size is no big enough,no splitting." 
 	fi
 }
 
@@ -53,9 +54,7 @@ then
 	. ${ABSROOT}/base 2>/dev/null
 	TESTDIR="${ABSROOT}/temp"
 	mkdir -p $TESTDIR
-
-	split_if_ness ./abigfile ${TESTDIR}
-	sleep 5
+	split_if_ness ${cur_dir}/scripts/functions/abigfile ${TESTDIR}
 	# do house keeping.
 	rm -rf $TESTDIR
 	echo 'removed test data(s).'
