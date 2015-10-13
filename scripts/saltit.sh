@@ -5,7 +5,7 @@
 
 # Global Variables
 # 1
-# 	"FUNCPATH":it is a conf file,within saltit/conf/ directory,see which os type,will return a varible 'ABSROOT' meet your real one.
+# 	"3 vars3 vars3 vars":within saltit/conf/abs.conf,by your os type,will return 3 varibles 'ABSROOT,FUNCPATH,seq(func)'
 
 # 2
 #	"WORKINGDIR"
@@ -17,6 +17,7 @@
 # the path of the dir,is by your env,override it till meet your need.
 # in rpi,it is /home/pi/Workspace/saltit/scripts/functions/.
 # in MinGW,it is /home/Users/Alan/tempP/saltit/(etc..)
+
 cur_dir=$( cd $( dirname $0 )  &&  cd ../conf && pwd -P )
 . $cur_dir/abs.conf
 
@@ -26,7 +27,8 @@ cur_dir=$( cd $( dirname $0 )  &&  cd ../conf && pwd -P )
 WORKINGDIR="No Yet"
 
 # include "base" first,then re-define "DEBUG"(from '2' to '0')
-DEBUG=0
+# in product-class,no need below,you can commet it(if no,no effect.)
+DEBUG=2
 
 # -----------------  Tropic of Cancer
 for i in "${FUNCPATH}"/*.sh
@@ -50,9 +52,9 @@ title31="\nStep3:...\n"
 # step 2: finish checking enviroments. 
 # ...
 # step 44: want exit(in a judge loop:case...esac)
-declare -i step=1
+declare -i step=1 #from '1'
 
-PS3=" [.   ] "
+PS3=" [. ...] "
 
 function main(){
 	echo -en $title01
@@ -62,6 +64,7 @@ function main(){
 		case $step in
 		1)
 			echo -en $title11 
+			huali
 			if [ $? -eq 0 ]
 			then
 				let step+=1
