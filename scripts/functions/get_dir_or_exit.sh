@@ -55,7 +55,7 @@ function _get_dir_action(){
 
 function get_dir_or_exit(){
 	# check in its env,if there is a variable named 'workingdir'
-	test -z $WORKINGDIR && return 3
+	test -z "$WORKINGDIR" && return 3
 
 	# this method should return strings (from its echo)
 	# default,program will search every $HOME/ dir which contains a '.token' or 'token' file
