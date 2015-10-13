@@ -1,14 +1,12 @@
 #!/bin/bash
 # filename get_dir_or_exit.sh
-
 # first of first,include abs root(directory) name.
-# get a global variable -- "ABSROOT"
+# get a global variable -- "FUNCPATH"
 cur_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 . $cur_dir/conf/abs.conf
 
 # !import! if product already,comment the below line.
 declare -i DEBUG=2
-
 
 function _help_of_find(){
 	# this helpful func return a dir name.
@@ -22,12 +20,13 @@ function _help_of_find(){
 		echo ""	
 	fi
 }
+
 function _get_dir_action(){
 	select workingdir in $( _help_of_find ) "i want input the dir manully" "rework" "exit"
 	do
 		case "$REPLY" in 
 		1)
-			echo "$workingdir"
+			echo "$workingdir"" (default) "
 			return 0
 			;;
 		2)
@@ -76,7 +75,7 @@ function get_dir_or_exit(){
 
 if [[ $DEBUG > 1 ]]
 then
-	. ${ABSROOT}/base 2>/dev/null
+	. ${FUNCPATH}/base 2>/dev/null
 	#global var: WORKINGDIR
 	WORKINGDIR='no_yet_now'
 	mkdir -p ${ABSROOT}/ddk1/
@@ -85,7 +84,7 @@ then
 	touch ${ABSROOT}/ddk2/token
 #	_help_of_find
 	get_dir_or_exit
-	echotest "\$?==$?"
+	huali
 	echotest "$WORKINGDIR"
 	
 #clean
@@ -93,4 +92,3 @@ then
 	rm -rf ${ABSROOT}/ddk2/
 	unset WORKINGDIR
 fi
-

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # first of first,include abs root(directory) name.
-# get a global variable -- "ABSROOT"
+# get a global variable -- "FUNCPATH"
 cur_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 . $cur_dir/conf/abs.conf
 
@@ -85,7 +85,7 @@ upload_all_except_ignores(){
 # ------------- the tropic of capricorn 
 if [[ $DEBUG > 1 ]] 
 then
-	. ${ABSROOT}/base 2>/dev/null
+	. ${FUNCPATH}/base 2>/dev/null
 	
 	# first ,client(programer) forgot append the dir-argument
 	upload_all_except_ignores
@@ -103,7 +103,7 @@ then
 
 	# make a temprary dir
 	#TEMPD="/home/pi/Workspace/saltit/uploads"
-	TEMPD=`dirname ${ABSROOT}`/uploads
+	TEMPD=`dirname ${FUNCPATH}`/uploads
 	mkdir -p "$TEMPD"	
 	touch "$TEMPD""/"{a,b,c,d,A,B,C,D}.txt
 	touch "$TEMPD"/.ignores 

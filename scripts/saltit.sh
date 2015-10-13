@@ -5,7 +5,7 @@
 
 # Global Variables
 # 1
-# 	"ABSROOT":it is a conf file,within saltit/conf/ directory,see which os type,will return a varible 'ABSROOT' meet your real one.
+# 	"FUNCPATH":it is a conf file,within saltit/conf/ directory,see which os type,will return a varible 'ABSROOT' meet your real one.
 
 # 2
 #	"WORKINGDIR"
@@ -21,16 +21,15 @@ cur_dir=$( cd $( dirname $0 )  &&  cd ../conf && pwd -P )
 . $cur_dir/abs.conf
 
 # then include 'base' enviroment.
-. $ABSROOT/base 2>/dev/null
+. ${FUNCPATH}/base 2>/dev/null
 # dummy a variable's value.
 WORKINGDIR="No Yet"
 
 # include "base" first,then re-define "DEBUG"(from '2' to '0')
-. ${ABSROOT}/base 2>/dev/null
 DEBUG=0
 
 # -----------------  Tropic of Cancer
-for i in "${ABSROOT}"/*.sh
+for i in "${FUNCPATH}"/*.sh
 do
 	. $i # 2>/dev/null 
 done
@@ -63,12 +62,11 @@ function main(){
 		case $step in
 		1)
 			echo -en $title11 
-			checkenv # see some important files is exists or no. 
 			if [ $? -eq 0 ]
 			then
 				let step+=1
 			else
-				continue_or_exit_whole
+				rework_or_exit_whole
 			fi 
 			;;
 		2)
@@ -78,7 +76,7 @@ function main(){
 			then
 				let step+=1
 			else
-				continue_or_exit_whole
+				rework_or_exit_whole
 			fi 
 			;;
 		3)
@@ -88,7 +86,7 @@ function main(){
 			then
 				let step+=1
 			else
-				continue_or_exit_whole
+				rework_or_exit_whole
 			fi 
 			;;		
 		4|44)

@@ -5,11 +5,11 @@
 # DEBUG level 0 -- No debug 
 # DEBUG level 1 -- simple debug info
 # DEBUG level 2 -- more detail about debug info
+# if fall into product-time,comment above and uncomment below line:
+# declare -i DEBUG=0
 
 declare -i DEBUG=2
 
-# if fall into product-time,comment above and uncomment below line:
-# declare -i DEBUG=0
 FILENAME=$(basename $0)
 declare DEBUGTITLE="[${FILENAME}  +]"
 function huali(){

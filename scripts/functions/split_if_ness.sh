@@ -1,6 +1,6 @@
 #!/bin/bash
 # first of first,include abs root(directory) name.
-# get a global variable -- "ABSROOT"
+# get a global variable -- "FUNCPATH"
 cur_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 . $cur_dir/conf/abs.conf
 
@@ -28,14 +28,12 @@ split_if_ness(){
 	if [ $size -gt  4 ];then
 		[[ $DEBUG > 1 ]] && echotest "prepare splitting!"
 		declare basenameofdollar1=$( basename $1 )
-		split -d -b 4M "$1" 
+		split -b 4m "$1"
 
 		# rename right now!
-		for name in x*
+		for name in $( ls x* )
 		do
 			mv $name ${2}/${basenameofdollar1}${name:1}
-#			echo 1:$name 
-#			echo 2:2:${2}/${basenameofdollar1}${name:1}
 		done
 		 		
 		# show what files in temp directory. 
@@ -51,8 +49,8 @@ split_if_ness(){
 #-------------Tropic of Capricorn
 if [[ $DEBUG > 1 ]]
 then
-	. ${ABSROOT}/base 2>/dev/null
-	TESTDIR="${ABSROOT}/temp"
+	. ${FUNCPATH}/base 2>/dev/null
+	TESTDIR="${FUNCPATH}/temp"
 	mkdir -p $TESTDIR
 	split_if_ness ${cur_dir}/scripts/functions/abigfile ${TESTDIR}
 	# do house keeping.
