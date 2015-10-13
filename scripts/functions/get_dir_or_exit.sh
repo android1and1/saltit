@@ -1,12 +1,6 @@
 #!/bin/bash
-# filename get_dir_or_exit.sh
-# first of first,include abs root(directory) name.
-# get a global variable -- "FUNCPATH"
-cur_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
-. $cur_dir/conf/abs.conf
-
-# !import! if product already,comment the below line.
-declare -i DEBUG=2
+#filename get_dir_or_exit.sh
+#test-filename:../tests/test_get_dir_or_exit.sh
 
 function _help_of_find(){
 	# this helpful func return a dir name.
@@ -72,23 +66,3 @@ function get_dir_or_exit(){
 	WORKINGDIR=$( _get_dir_action )
 	return 0
 }
-
-if [[ $DEBUG > 1 ]]
-then
-	. ${FUNCPATH}/base 2>/dev/null
-	#global var: WORKINGDIR
-	WORKINGDIR='no_yet_now'
-	mkdir -p ${ABSROOT}/ddk1/
-	mkdir -p ${ABSROOT}/ddk2/
-	touch ${ABSROOT}/ddk1/.token
-	touch ${ABSROOT}/ddk2/token
-#	_help_of_find
-	get_dir_or_exit
-	huali
-	echotest "$WORKINGDIR"
-	
-#clean
-	rm -rf ${ABSROOT}/ddk1/
-	rm -rf ${ABSROOT}/ddk2/
-	unset WORKINGDIR
-fi

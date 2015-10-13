@@ -1,11 +1,6 @@
 #!/bin/bash
-# first of first,include abs root(directory) name.
-# get a global variable -- "FUNCPATH"
-cur_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
-. $cur_dir/conf/abs.conf
-
-# !import! if product already,comment the below line.
-declare -i DEBUG=2
+# filename:split_if_ness.sh
+# test-filename:../tests/test_split_if_ness.sh
 
 #-------------Tropic of Cancer
 split_if_ness(){
@@ -47,13 +42,3 @@ split_if_ness(){
 }
 
 #-------------Tropic of Capricorn
-if [[ $DEBUG > 1 ]]
-then
-	. ${FUNCPATH}/base 2>/dev/null
-	TESTDIR="${FUNCPATH}/temp"
-	mkdir -p $TESTDIR
-	split_if_ness ${cur_dir}/scripts/functions/abigfile ${TESTDIR}
-	# do house keeping.
-	rm -rf $TESTDIR
-	echo 'removed test data(s).'
-fi
