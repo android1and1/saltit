@@ -54,8 +54,6 @@ title31="\nStep3:...\n"
 # step 44: want exit(in a judge loop:case...esac)
 declare -i step=1 #from '1'
 
-PS3=" [. ...] "
-
 function main(){
 	echo -en $title01
 	while [ 1 ]
@@ -64,7 +62,6 @@ function main(){
 		case $step in
 		1)
 			echo -en $title11 
-			huali
 			if [ $? -eq 0 ]
 			then
 				let step+=1
