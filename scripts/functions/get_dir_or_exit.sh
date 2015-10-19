@@ -7,14 +7,15 @@ function _help_of_find(){
 	# this helpful func return a dir name.
 	# fatastic,only one time wrriten it,no error!
 	thesedirs=$( find ${ABSROOT} -type f -regex '.*/\.?token$' -exec dirname {} \; | awk '{print $1;}' )
-	#thedir=$( echo $thesedirs | awk '{print $1;}' ) 
-	#if test -d "$thedir"
+	[[ $DEBUG > 1 ]] && echotest "$thesedirs"
+	# if count dirs more than one "dir1 dir2...",will lost at the below line,at last show "No Found!"
 	if test -d "$thesedirs"
 	then
 		#echo $thedir
 		echo $thesedirs
 	else
-		echo ""	
+#		echo ""	
+		echo "No Found!"
 	fi
 }
 
