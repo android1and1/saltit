@@ -33,11 +33,11 @@ DEBUG=2
 # -----------------  Tropic of Cancer
 for i in "${FUNCPATH}"/*.sh
 do
-	. $i # 2>/dev/null 
+	. $i 2>/dev/null 
 done
 # -----------------  Tropic of Capricorn 
 
-# titles( !s!)
+# title(s)
 # these titles all need "echo -en" because it contains '\n' token.
 # we can do these via invoke our help-func:weecho(we echo)
 
@@ -52,7 +52,9 @@ title31="\nStep3:...\n"
 # step 2: finish checking enviroments. 
 # ...
 # step 44: want exit(in a judge loop:case...esac)
-declare -i step=1 #from '1'
+
+#STEP NUMBER FROM '1'
+declare -i step=1 
 
 function main(){
 	echo -en $title01
@@ -62,6 +64,7 @@ function main(){
 		case $step in
 		1)
 			echo -en $title11 
+			daimecheck
 			if [ $? -eq 0 ]
 			then
 				let step+=1
