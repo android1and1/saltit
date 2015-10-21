@@ -10,7 +10,6 @@ function rework_or_exit_whole(){
 		return 1
 	fi
 
-	[[ $DEBUG > 1 ]]  &&  echotest "\$step==$step"
 	select iwant in "exit" "rework"
 	do
 

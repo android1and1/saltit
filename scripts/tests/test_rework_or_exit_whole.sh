@@ -2,11 +2,11 @@
 # filename:test_rework_or_exit_whole.sh
 
 # first of first,include abs root(directory) name.
-# get a global variable -- "FUNCPATH"
 cur_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 . $cur_dir/conf/abs.conf
+
 . ${FUNCPATH}/base 2>/dev/null
-. ${FUNCPATH}/rework_or_exit_whole.sh
+
 step=0
 echotest "first,step==$step."
 rework_or_exit_whole
