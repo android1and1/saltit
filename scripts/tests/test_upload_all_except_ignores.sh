@@ -10,7 +10,6 @@ cur_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 	
 # first ,client(programer) forgot append the dir-argument
 upload_all_except_ignores
-exit
 
 # it will return and show why it failure
 # try again.
@@ -38,10 +37,10 @@ upload_all_except_ignores "$TEMPD"
 huali
 upload_all_except_ignores "$TEMPD"
 
-# yes,it not work again,but if we remove the ./done?
+# yes,it not work again,but if we remove the ./.done?
 # not forget 'huali'
 huali
-rm "$TEMPD""/done"
+rm "$TEMPD""/.done"
 upload_all_except_ignores "$TEMPD"
 
  

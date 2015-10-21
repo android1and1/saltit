@@ -5,7 +5,7 @@
 # ------------- the tropic of cancer
 upload_all_except_ignores(){
 	# $1 is the uploads dir, default name is "uploads".
-	# check if it has a 'done' token-file.
+	# check if it has a '.done' token-file.
 	# check if have a '.ignore' file.
 	# and re-list all files,they need be encryed,except files in .ignore.
 	# return the list via 'echo' event.
@@ -26,11 +26,11 @@ upload_all_except_ignores(){
 		return 1
 	fi
 
-	# check if the dir contains a 'done' file,it is a token meanning all files below the dir has
+	# check if the dir contains a '.done' file,it is a token meanning all files below the dir has
 	# been encryed and handled.
 	# in this case,function return
-	if [ -f "$1""/done" ];then
-		echo 'the directory is done(encryed already,not need handle again till you remove "done" file)'
+	if [ -f "$1""/.done" ];then
+		echo 'the directory is done(encryed already,not need handle again till you remove ".done" file)'
 		return 0
 	fi
 
@@ -71,7 +71,7 @@ upload_all_except_ignores(){
 	# Till here,we got result,which should be encryed.
 	echo ${alls[@]}
 	# make a token,so next invoke this will exit --- dont do again.
-	touch "$1""/done"	
+	touch "$1""/.done"	
 	unset i ii  innermax outmax alls ignores 
 	return 0
 }

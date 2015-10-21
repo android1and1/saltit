@@ -11,5 +11,19 @@ cur_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 step=1
 mkdir -p ${ABSROOT}/temp/temp11/
 touch  ${ABSROOT}/temp/temp11/.token
+touch ${ABSROOT}/temp/temp11/done
 echotest "$( actively )"
-exit 0
+huali
+
+#next test
+rm ${ABSROOT}/temp/temp11/done
+echotest "$(actively)"
+huali
+
+# last test
+rm  ${ABSROOT}/temp/temp11/.token
+echotest "$(actively)"
+
+
+#house keeping
+rm -rf ${ABSROOT}/temp/temp11/

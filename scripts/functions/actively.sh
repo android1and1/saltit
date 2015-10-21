@@ -6,7 +6,8 @@
 # oldname:get_dir_or_exit.sh
 
 function actively(){
-	while [ 1 ]
+	declare -i everloop=1
+	while [ $everloop -gt 0 ]
 	do
 		if [ "$( help_of_find )" = "No Way!" ];then
 			rework_or_exit_whole
@@ -17,21 +18,27 @@ function actively(){
 				case $REPLY in
 				1)
 					echo $decide
+					let everloop=0
 					break
 					;;
 				2)
 					# input mine
 					read -p "enter the directory name: " dirname
 					checkvalidor $dirname
+					let everloop=0
 					break
 					;;
 				3)
 					echo 'exit case'
+					let everloop=0
 					break
+					;;
+				*)
+					echo 'only 1 2 3 option are valid.'
+					REPLY=
 					;;
 				esac
 			done
-			return 0
 		fi
 	done
 }
