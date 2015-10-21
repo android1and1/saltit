@@ -4,7 +4,6 @@
 cur_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 . $cur_dir/conf/abs.conf
 . ${FUNCPATH}/base 2>/dev/null
-. ${FUNCPATH}/split_if_ness.sh
 
 TESTDIR="${FUNCPATH}/temp"
 mkdir -p $TESTDIR

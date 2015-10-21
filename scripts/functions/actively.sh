@@ -1,16 +1,11 @@
 #!/bin/bash
 # filename:actively.sh
 # refact at 2015-10-19 AM 9:47:00
+# modified at 2015-10-21 AM 9:42:00
 
 # oldname:get_dir_or_exit.sh
 
 function actively(){
-
-	if [ $DEBUG -gt 1 ];then
-		#echotest "${0##*/}"
-		. ${FUNCPATH}/*.sh
-	fi
-
 	while [ 1 ]
 	do
 		if [ "$( help_of_find )" = "No Way!" ];then
@@ -22,15 +17,18 @@ function actively(){
 				case $REPLY in
 				1)
 					echo $decide
+					break
 					;;
 				2)
 					# input mine
 					checkvalidor $decide
 					echo $decide
+					break
 					;;
 				3)
 					echo 'exit case'
 					break
+					;;
 				esac
 			done
 			return 0

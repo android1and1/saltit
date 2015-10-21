@@ -7,7 +7,6 @@ cur_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 . $cur_dir/conf/abs.conf
 
 . ${FUNCPATH}/base 2>/dev/null
-. ${FUNCPATH}/upload_all_except_ignores.sh 2>/dev/null
 	
 # first ,client(programer) forgot append the dir-argument
 upload_all_except_ignores
