@@ -21,8 +21,8 @@ function actively(){
 					;;
 				2)
 					# input mine
-					checkvalidor $decide
-					echo $decide
+					read -p "enter the directory name: " dirname
+					checkvalidor $dirname
 					break
 					;;
 				3)

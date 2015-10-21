@@ -10,6 +10,7 @@ cur_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 	
 # first ,client(programer) forgot append the dir-argument
 upload_all_except_ignores
+exit
 
 # it will return and show why it failure
 # try again.
@@ -23,7 +24,6 @@ upload_all_except_ignores /home/pi/nothisdirectory/
 huali
 
 # make a temprary dir
-#TEMPD="/home/pi/Workspace/saltit/uploads"
 TEMPD=`dirname ${FUNCPATH}`/uploads
 mkdir -p "$TEMPD"	
 touch "$TEMPD""/"{a,b,c,d,A,B,C,D}.txt
