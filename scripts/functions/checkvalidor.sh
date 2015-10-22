@@ -10,7 +10,7 @@ function checkvalidor(){
 	fi
 
 	if test ! -d "$1";then
-		echo "$1 is not a valid directory."
+		echo "\"$1\" is not a valid directory."
 		return 2
 	fi
 

@@ -16,7 +16,8 @@ function rework_or_exit_whole(){
 		case $REPLY in 
 		1)
 			let step=44
-			break
+			# sub invokes this,in this case,exit whole.
+			exit 1
 			;;
 		2)
 			let step=1
