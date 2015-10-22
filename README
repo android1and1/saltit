@@ -1,60 +1,25 @@
-# readme of package,totally
-# init dirs
-# prepare constant files:
-	md5sum_0,md5sum_01....
-	okay_0,okay01...
-# tokenfile = token file
-tokenfile is encoded_okaystr_binary
-sample(./share/okaies/encoded_okay-11): #client will see 'tokenfile'
-	Salted__沿~u佥+齻振梴詴饣Ms傈
-above means:'okay' be coded,key file is 11's md5sum.
-decode it,run:
-	openssl enc -d -aes256 -in tokenfile -kfile ./share/md5s/md5sum_11 -out okay.txt 
+saltit project
+[version]
+2015-9 ~ 2015-11
+wrriten by Alan Dershowitz.
 
+[purpose]
+encoded local datas,upload to cloud server.
+user just need remember one simple password,example:"1",after download encoded-datas and decodeding them.
+so,let us say saltit is a peronal-prividge protecter.
 
-init: first run "first.sh"
-add new user to editors list.
+[usage]
+1)put data files(who need encode) in one directory,add a '.ignores' file,a 'token' file in the directory.
+2) run ~/saltit/scripts/saltit.sh 
+3)during the script(saltit.sh) processing,input your simple password(example '1').
+4)upload result files(to cloud server or a protectting directory in locale zone).
 
-i////// store mile
-stonemile
-milestone
-which is right,i think the last:milestone.
+[project status ]
+as now,it be control by GIT,git-repositories at:
+1)hp ultrabook's disc.
+2)hp pc's disc,at /c/Users/Administrator/tempP
+3)raspberry pi2 B+
+after some days,it will be post to AWS.
 
-
-当前日期: 2015/09/30 周三 
-输入新日期: (年月日) 
-hp-pc input above some lines.
-from master,from rpi,run 'git checkout --orphan saltrepo'
-then,in another directory,run 'git clone --bare --branch=saltrepo /home/pi/saltit',get a auto-cream directory,named 'saltrepo.git'
-
-//
-then,from remote computer,let us say,it is hp pc,do:
-git clone pi@192.168.0.125:~/saltit.git'
-
-we got a bare repo and has push-power clients(notice the 's'!)
-we can commits from anywhere afterward.
-
-
-//Thu Oct  8 09:09:02 CST 2015
-from raspi(respoty itself),make a comment.
-
-
-//Thu Oct  8 09:18:21 CST 2015
-from raspi,make another comment. 
-
-// 2015-10-14 09:09 AM
-now pc:alancomputer,want to check if mirror git site can do same as origin.
-write above see changes.
-
-
-rongzai-test:(successfully| fail)
-//which rongzai.
-//remove all machine,choice new -- BBB(TI).
-successfully , all.
-
-//2015-10-19 9:28:00
-youxian kuandai is stopped,so enviroment has changed.
-the divided env is a constant.
-most of works doing at this machine -- Hp Ultrabook(laptable).
-//Tue Oct 20 08:49:17     2015
-continue 'saltit'(rework)
+[test case]
+in developping.

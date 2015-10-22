@@ -10,6 +10,10 @@ function actively(){
 		rework_or_exit_whole
 		return 1
 	fi
+	# 'passengers' means each of encode-needing-files.
+	if [ -z "$passengers" ];then
+		[ test $DEBUG -gt 1 ] && echotest 'global variable "passengers" no seted.'
+	fi
 
 	declare -i everloop=1
 
