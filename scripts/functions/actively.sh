@@ -7,12 +7,14 @@
 
 function actively(){
 	if [ "$( help_of_find )" = "No Way!" ];then
+		[[ $DEBUG > 1 ]]  && echotest "always loop into this."
 		rework_or_exit_whole
-		return 1
+		return 2
 	fi
 	# 'passengers' means each of encode-needing-files.
 	if [ -z "$passengers" ];then
 		[ test $DEBUG -gt 1 ] && echotest 'global variable "passengers" no seted.'
+		return 1
 	fi
 
 	declare -i everloop=1

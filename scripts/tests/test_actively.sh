@@ -10,7 +10,7 @@ project_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 
 # first test,if it has no global variable 'passengers' yet,function will fastly return a warning msg.
 step=1
-echotest "first test started."
+echotest "the first test started."
 echotest "$( actively )"
 huali
 
@@ -18,18 +18,22 @@ huali
 mkdir -p ${ABSROOT}/temp/temp11/
 touch  ${ABSROOT}/temp/temp11/.token
 touch ${ABSROOT}/temp/temp11/done
+echotest "the second test:has .token and done."
 echotest "$( actively )"
 huali
 
 #next test
 rm ${ABSROOT}/temp/temp11/done
+echotest "the third test: has .token(file -- 'done' remove)."
 echotest "$(actively)"
 huali
 
 # last test
 rm  ${ABSROOT}/temp/temp11/.token
+echotest "the fourth test :has None(no 'done',no '.token')."
 echotest "$(actively)"
 
 
 #house keeping
 rm -rf ${ABSROOT}/temp/temp11/
+echotest "Test Done."
