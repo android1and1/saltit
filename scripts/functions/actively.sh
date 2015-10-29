@@ -13,7 +13,7 @@ function actively(){
 	fi
 	# 'passengers' means each of encode-needing-files.
 	if [ -z "$passengers" ];then
-		[ test $DEBUG -gt 1 ] && echotest 'global variable "passengers" no seted.'
+		[[ $DEBUG -gt 1 ]] && echotest 'global variable "passengers" no seted.'
 		return 1
 	fi
 
