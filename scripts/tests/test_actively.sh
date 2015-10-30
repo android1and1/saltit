@@ -16,21 +16,21 @@ huali
 
 # but still has warnning.
 mkdir -p ${ABSROOT}/temp/temp11/
-touch  ${ABSROOT}/temp/temp11/.token
+touch  ${ABSROOT}/temp/temp11/token
 touch ${ABSROOT}/temp/temp11/done
-echotest "the second test:has .token and done."
+echotest "the second test:has a 'token' file  and a 'done' file."
 echotest "$( actively )"
 huali
 
 #next test
 rm ${ABSROOT}/temp/temp11/done
-echotest "the third test: has .token(file -- 'done' remove)."
+echotest "the third test: has a token file (the 'done' file has removed)."
 echotest "$(actively)"
 huali
 
 # last test
-rm  ${ABSROOT}/temp/temp11/.token
-echotest "the fourth test :has None(no 'done',no '.token')."
+rm  ${ABSROOT}/temp/temp11/token
+echotest "the fourth test :has None(no 'done',no 'token')."
 echotest "$(actively)"
 
 

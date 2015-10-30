@@ -8,14 +8,14 @@ project_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 . $project_dir/conf/abs.conf
 . ${FUNCPATH}/base 2>/dev/null
 # first
-#echotest "1st:no token or .token file exists."
-#echotest "$( help_of_find )"
-#huali
+echotest "1st:no token or .token file exists."
+echotest "$( help_of_find )"
+huali
 
 # mkdir
-echotest "2nd:has a .token and its directory."
+echotest "2nd:has a prefix token and its directory."
 mkdir -p ${ABSROOT}/temp/temp11/
-touch ${ABSROOT}/temp/temp11/.token
+touch ${ABSROOT}/temp/temp11/hasprefixtoken
 echotest "$( help_of_find )"
 huali
 
