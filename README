@@ -27,4 +27,34 @@ in developping.
 
 
 [tag(mile stone)]
-2015-10-30 disable '.token' (MacBook Air)
+2015-10-30 disable 'token' ,only '.token' is valid (MacBook Air)
+
+[core functions]
+actively.sh
+	
+base
+	provides 2 variables:1) ABSROOT 2) FUNCPATH 
+	if microsoft's MingGW env,seq() definiation will add.
+checkvalidor.sh
+
+help_of_find.sh
+	no argument.
+	return "No Way" if can not find any ".token" file.
+	else,return the listname.
+
+rework_or_exit_whole.sh
+	no argument.
+	lead user to interaction processor,give '1' ,'2' two choices.
+	choice '1',exit all processor.
+	choice '2',set variable 'step' to '=1'(rework) step44 means exit all,step1 means reback the first.
+	will check 'step' as soon as func invoke,if not set will warnning.
+split_if_ness.sh
+	$1:
+	$2:
+	return None.split big file(>=4M)
+upload_all_except_ignores.sh
+	$1:is directory which contains encoded_need_files.
+	echo to stdout a warnning msg if the dir has a '.done' file,
+	in this case,touch a '.done' file at last,
+	echo to stdout a list(filenames) if all is right.
+	
