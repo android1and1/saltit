@@ -30,10 +30,10 @@ function echotest(){
 # iisr=if i say right
 function iisr(){
 	#"$1" is a expression ,value is boolean '1' or '0'
-	if test "$1";then
-		echo "IT WAS TRUE: ""$1" 
+	if test $1;then
+		echo "::TRUE:: ""$1" 
 	else
-		echo "IT WAS NOT TRUE: ""$1" 
+		echo "::ERROR:: ""$1" 
 	fi
 }
 #invoke include method now.

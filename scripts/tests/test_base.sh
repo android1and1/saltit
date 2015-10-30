@@ -6,6 +6,6 @@ project_dir=$( cd $( dirname $0 ) && cd ../../ && pwd -P )
 . ${FUNCPATH}/base
 
 huali
-iisr "1 -gt 0"
+iisr "$? -eq 0"
 huali
 
