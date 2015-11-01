@@ -10,6 +10,8 @@ project_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 
 # first test,if it has no global variable 'passengers' yet,function will fastly return a warning msg.
 step=1
+passengers='templary'
+
 echotest "the first test started."
 echotest "$( actively )"
 huali
