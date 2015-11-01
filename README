@@ -3,6 +3,24 @@ saltit project
 2015-9 ~ 2015-11
 wrriten by Alan Dershowitz.
 
+2015-11-1
+i found the 'DEBUG' is sipirt of debugging.
+a test-func can be a diretly func,or a 2+ layer invokes func,
+tonight i invoke 'actively.sh',but not gave good result,why,because in its-invoking func -- help_of_find()
+has a [[ $DEBUG > 1 ]] && echotest "something..."
+the 2+ layer invokes func -- actively.sh,can not display the bottom func's echo(stdout) right now,instead,it
+display the 2+ layer output,after whole return,then show the before msg from boottom func's output.
+so,i wriiten a commit said 'it is harmful for debuger...'
+but,but..
+i make mistaken,
+old bash administrator's lesson is new yet:
+just handle the 2+ layer func like this:
+(head)
+DEBUG=0
+(then do before)
+
+i mean setup a 'DEBUG' in 2+ layer func,can overide echo event before.
+
 [purpose]
 encoded local datas,upload to cloud server.
 user just need remember one simple password,example:"1",after download encoded-datas and decodeding them.

@@ -2,7 +2,7 @@
 # filename:actively.sh
 # refact at 2015-10-19 AM 9:47:00
 # actively.sh==main.sh(means:delete old contents of saltit.sh,let it be a soft link of this.)
-
+DEBUG=0
 function actively(){
 	if [ "$( help_of_find )" = "No Way!" ];then
 		[[ $DEBUG > 1 ]]  && echotest "no found!why?always loop into this."
