@@ -14,12 +14,13 @@ so,i wriiten a commit said 'it is harmful for debuger...'
 but,but..
 i make mistaken,
 old bash administrator's lesson is new yet:
-just handle the 2+ layer func like this:
+just handle the 2+ layer test-func like this:
 (head)
+. $FUNCPATH/base 2>/dev/null
 DEBUG=0
 (then do before)
 
-i mean setup a 'DEBUG' in 2+ layer func,can overide echo event before.
+i mean setup a 'DEBUG' in 2+ layer test-func,can overide echo event before.
 
 [purpose]
 encoded local datas,upload to cloud server.

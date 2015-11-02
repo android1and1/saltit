@@ -2,11 +2,9 @@
 # filename:actively.sh
 # refact at 2015-10-19 AM 9:47:00
 # actively.sh==main.sh(means:delete old contents of saltit.sh,let it be a soft link of this.)
-DEBUG=0
 function actively(){
 	if [ "$( help_of_find )" = "No Way!" ];then
-		[[ $DEBUG > 1 ]]  && echotest "no found!why?always loop into this."
-		rework_or_exit_whole
+		echo "need uploading directory,has no found."
 		return 2
 	fi
 	# 'passengers' means each of encode-needing-files.
@@ -15,8 +13,6 @@ function actively(){
 		return 1
 	fi
 
-	while [ 1 ]
-	do
 		select decide in "$( help_of_find )"" (default)" "i_want_input_mine:" "exit"
 		do
 			case $REPLY in
@@ -40,5 +36,4 @@ function actively(){
 				;;
 		esac
 		done
-	done
 }
