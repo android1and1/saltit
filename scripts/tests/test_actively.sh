@@ -24,7 +24,7 @@ touch  ${ABSROOT}/temp/temp11/a
 touch  ${ABSROOT}/temp/temp11/b
 touch  ${ABSROOT}/temp/temp11/c
 touch  ${ABSROOT}/temp/temp11/.ignores
-echo 'a'>>${ABSROOT}/temp/temp11/.ignores
+#echo 'a'>>${ABSROOT}/temp/temp11/.ignores
 touch ${ABSROOT}/temp/temp11/.done
 echotest "the second test:has a '.token' file  and a '.done' file."
 echotest "$( actively )"

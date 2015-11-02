@@ -60,6 +60,9 @@ function upload_all_except_ignores(){
 		fi
 		for i in $( seq 0 $outmax )	
 		do
+			if [ -z $ignores ];then
+				break
+			fi
 			let innermax=${#ignores[@]}-1
 			if test $DEBUG -eq 0;then
 				echotest "INNERMAX==""$innermax"
