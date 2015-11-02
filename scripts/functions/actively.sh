@@ -9,7 +9,7 @@ function actively(){
 	fi
 	# 'passengers' means each of encode-needing-files.
 	if [ -z "$passengers" ];then
-		[[ $DEBUG -gt 1 ]] && echotest 'global variable "passengers" no seted.'
+		echo "global variable 'passengers' no seted."
 		return 1
 	fi
 
@@ -18,6 +18,7 @@ function actively(){
 			case $REPLY in
 			1)
 				echo $decide
+				upload_all_except_ignores $decide
 				break
 				;;
 			2)

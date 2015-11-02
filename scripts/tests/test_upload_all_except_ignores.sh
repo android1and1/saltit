@@ -9,6 +9,7 @@ project_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 . ${FUNCPATH}/base 2>/dev/null
 	
 # first ,client(programer) forgot append the dir-argument
+echotest "hi"
 upload_all_except_ignores
 
 # it will return and show why it failure
@@ -17,13 +18,13 @@ huali
 
 # second time,client forgot the real path name,he input
 # a no exists directory.
-upload_all_except_ignores /home/pi/nothisdirectory/
+upload_all_except_ignores ${ABSROOT}/temp/nothisdir 
 
 # and it failure.try again
 huali
 
 # make a temprary dir
-TEMPD=`dirname ${FUNCPATH}`/uploads
+TEMPD="$ABSROOT""/uploads"
 mkdir -p "$TEMPD"	
 touch "$TEMPD""/"{a,b,c,d,A,B,C,D}.txt
 touch "$TEMPD"/.ignores 

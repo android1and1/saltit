@@ -3,7 +3,7 @@
 # test-filename:../tests/test_upload_all_except_ignores.sh
 
 # ------------- the tropic of cancer
-upload_all_except_ignores(){
+function upload_all_except_ignores(){
 	# $1 is the uploads dir, default name is "uploads".
 	# check if it has a '.done' token-file.
 	# check if have a '.ignore' file.
@@ -11,10 +11,10 @@ upload_all_except_ignores(){
 	# return the list via 'echo' event.
 
 	# first we will check if "$1" is given,if not , if "./uploads" is exists
-	[[ DEBUG > 1 ]] && echotest "\$#==$# and \$1==${1}"
+	[[ $DEBUG > 1 ]] && echotest "\$#==$# and \$1==${1}"
 
 	# check length of arguments.
-	if [ $# -ne 1 ];then
+	if [ $# -lt 1 ];then
 		echo Usage: "$0" THE_UPLOAD_DIRECTORY
 		# exit 2
 		return 2
@@ -43,7 +43,8 @@ upload_all_except_ignores(){
 
 
 	alls=( $( ls "$1" ) )
-	test $DEBUG -gt 1 && echo $DEBUGTITLE"  \$alls=="${alls[@]}
+	#test $DEBUG -gt 1 && echo $DEBUGTITLE"  \$alls=="${alls[@]}
+	test $DEBUG -gt 1 && echo "\$1==${1}"
 
 
 	# check variable:alls
@@ -54,14 +55,20 @@ upload_all_except_ignores(){
 		ignores=( `cat "$1"/.ignores` )
 		# run loop for match each ignore.	
 		let outmax="${#alls[@]}-1"
+		if test $DEBUG -eq 0;then
+			echotest "OUTMAX==""$outmax"
+		fi
 		for i in $( seq 0 $outmax )	
 		do
-			let innermax=" ${#ignores[@]} - 1 "
+			let innermax=${#ignores[@]}-1
+			if test $DEBUG -eq 0;then
+				echotest "INNERMAX==""$innermax"
+			fi
 			for ii in $( seq 0 $innermax )	
 			do
 				if [[ ${alls[$i]} == ${ignores[$ii]} ]]
 				then
-					test $DEBUG -gt 1 && echo $DEBUGTITLE"  \$all[i]:\$ignores[ii] --- "${alls[$i]}":"${ignores[$ii]} 
+					test $DEBUG -gt 1 && echotest "\$all[i]:\$ignores[ii] ---${alls[$i]}:${ignores[$ii]}" 
 					unset alls[i]
 				fi
 			done
