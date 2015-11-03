@@ -11,7 +11,6 @@ project_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 # first test,if it has no global variable 'passengers' yet,function will fastly return a warning msg.
 step=1
 DEBUG=0
-passengers='tempnames'
 
 echotest "the first test started."
 echotest "$( actively )"
@@ -24,25 +23,35 @@ touch  ${ABSROOT}/temp/temp11/a
 touch  ${ABSROOT}/temp/temp11/b
 touch  ${ABSROOT}/temp/temp11/c
 touch  ${ABSROOT}/temp/temp11/.ignores
-#echo 'a'>>${ABSROOT}/temp/temp11/.ignores
+touch  ${ABSROOT}/temp/temp11/d
+echo 'a b'>>${ABSROOT}/temp/temp11/.ignores
 touch ${ABSROOT}/temp/temp11/.done
 echotest "the second test:has a '.token' file  and a '.done' file."
 echotest "$( actively )"
 huali
 
-#next test
+#the 3rd test
 rm ${ABSROOT}/temp/temp11/.done
 echotest "the third test: has a .token file (the 'done' file has removed)."
 echotest "$(actively)"
 huali
-rm -rf ${ABSROOT}/temp/*
-exit
 
-# last test
+# the 4th test
+echotest "the 4th test: has None(no '.done',no '.token')."
 rm  ${ABSROOT}/temp/temp11/.token
-echotest "the fourth test :has None(no '.done',no '.token')."
 echotest "$(actively)"
+huali
+
+# the 5th test
+echotest "the 5th test:when choice order 1,will display invoking function\'s name."
+touch  ${ABSROOT}/temp/temp11/.token
+# invoking now!
+actively
+# must choice 1
+iisr "$? -eq 1000"
+huali
 
 #house keeping
 rm -rf ${ABSROOT}/temp/temp11/
+
 echotest "Test Done."

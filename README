@@ -77,3 +77,7 @@ upload_all_except_ignores.sh
 	in this case,touch a '.done' file at last,
 	echo to stdout a list(filenames) if all is right.
 	
+[Notices]
+1,dont rely checking arguments length,in dirctly layer(test the base function),arguments length will tell us 
+if the function received hoped arguments,but in 2+ layer invokes,first argument has changed,arguments length will
+add 1.

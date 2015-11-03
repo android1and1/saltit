@@ -7,34 +7,29 @@ function actively(){
 		echo "need uploading directory,has no found."
 		return 2
 	fi
-	# 'passengers' means each of encode-needing-files.
-	if [ -z "$passengers" ];then
-		echo "global variable 'passengers' no seted."
-		return 1
-	fi
 
-		select decide in "$( help_of_find )"" (default)" "i_want_input_mine:" "exit"
-		do
-			case $REPLY in
-			1)
-				echo $decide
-				upload_all_except_ignores $decide
-				break
-				;;
-			2)
-				# input mine
-				read -p "enter the directory name: " dirname
-				checkvalidor $dirname
-				break
-				;;
-			3)
-				echo 'exit case'
-				break
-				;;
-			*)
-				echo 'only 1 2 3 option are valid.'
-				REPLY=
-				;;
+	select decide in "$( help_of_find )"" (default)" "i_want_input_mine:" "exit"
+	do
+		case $REPLY in
+		1)
+			echo $decide
+			upload_all_except_ignores $decide
+			break
+			;;
+		2)
+			# input mine
+			read -p "enter the directory name: " dirname
+			checkvalidor $dirname
+			break
+			;;
+		3)
+			echo 'exit case'
+			break
+			;;
+		*)
+			echo 'only 1 2 3 option are valid.'
+			REPLY=
+			;;
 		esac
-		done
+	done
 }

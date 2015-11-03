@@ -43,8 +43,8 @@ function upload_all_except_ignores(){
 
 
 	alls=( $( ls "$1" ) )
-	#test $DEBUG -gt 1 && echo $DEBUGTITLE"  \$alls=="${alls[@]}
-	test $DEBUG -gt 1 && echo "\$1==${1}"
+	test $DEBUG -gt 1 && echotest "\$alls==${alls[@]}"
+	test $DEBUG -gt 1 && echotest "\$1==${1}"
 
 
 	# check variable:alls
@@ -55,7 +55,7 @@ function upload_all_except_ignores(){
 		ignores=( `cat "$1"/.ignores` )
 		# run loop for match each ignore.	
 		let outmax="${#alls[@]}-1"
-		if test $DEBUG -eq 0;then
+		if test $DEBUG -gt 1;then
 			echotest "OUTMAX==""$outmax"
 		fi
 		for i in $( seq 0 $outmax )	
@@ -64,7 +64,7 @@ function upload_all_except_ignores(){
 				break
 			fi
 			let innermax=${#ignores[@]}-1
-			if test $DEBUG -eq 0;then
+			if test $DEBUG -gt 1;then
 				echotest "INNERMAX==""$innermax"
 			fi
 			for ii in $( seq 0 $innermax )	
