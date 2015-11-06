@@ -7,16 +7,9 @@ project_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 
 . ${FUNCPATH}/base 2>/dev/null
 
-step=0
-echotest "first,step==$step."
-rework_or_exit_whole
-echotest "Now \$step==$step"
-huali
-# if enviroment has no "step"
-unset step
+echotest "first test:"
 rework_or_exit_whole
 huali
-# if step=1000,yes,its too big but its valid.
-step=1000
+
+echotest "2nd test:"
 rework_or_exit_whole
-echotest "Now \$step==$step."

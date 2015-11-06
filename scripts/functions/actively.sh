@@ -12,7 +12,6 @@ function actively(){
 	do
 		case $REPLY in
 		1)
-			echo $decide
 			upload_all_except_ignores $decide
 			break
 			;;
@@ -20,6 +19,11 @@ function actively(){
 			# input mine
 			read -p "enter the directory name: " dirname
 			checkvalidor $dirname
+			if [ $? -eq 0 ];then
+				upload_all_except_ignores $dirname
+			else
+				echo no valid directory\! exit.
+			fi
 			break
 			;;
 		3)

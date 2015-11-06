@@ -4,9 +4,8 @@
 
 # ------------- the tropic of cancer
 function upload_all_except_ignores(){
-	# $1 is the uploads dir, default name is "uploads".
-	# check if it has a '.done' token-file.
-	# check if have a '.ignore' file.
+	# invoke another function:checkvalidor,for check the uploading directory,
+	# obeys the files: '.ignore" include all need-encrypt file(s),
 	# and re-list all files,they need be encryed,except files in .ignore.
 	# return the list via 'echo' event.
 
@@ -16,22 +15,15 @@ function upload_all_except_ignores(){
 	# check length of arguments.
 	if [ $# -lt 1 ];then
 		echo Usage: "$0" THE_UPLOAD_DIRECTORY
-		# exit 2
-		return 2
+		return 20
 	fi
 	
-	# check if the dir name is real(if exists)
-	if test ! -d "$1";then
-		echo "directory	""$1""is not exists."
-		return 1
-	fi
-
-	# check if the dir contains a '.done' file,it is a token meanning all files below the dir has
-	# been encryed and handled.
-	# in this case,function return
-	if [ -f "$1""/.done" ];then
-		echo 'the directory is done(encryed already,not need handle again till you remove ".done" file)'
-		return 0
+	# invoke another func:checkvalidor.
+	checkvalidor "$1"	
+	if test $? -ne 0 
+	then
+		[ $DEBUG -gt 1 ] && echo "[function upload_all_except_ignores said] $1 is not a valid directory."
+		return 10
 	fi
 
 	#ignores keeps some files that no need be encryed.

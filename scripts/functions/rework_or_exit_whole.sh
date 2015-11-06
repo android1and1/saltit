@@ -3,24 +3,16 @@
 # test-filename:../tests/test_rework_or_exit_whole.sh
 
 function rework_or_exit_whole(){
-	# should test if global variable:"step" is exists.
-	if test -z "$step"
-	then
-		[[ $DEBUG > 1 ]]  | echotest "\$step not exists."
-		return 1
-	fi
-
 	select iwant in "exit" "rework"
 	do
 
 		case $REPLY in 
 		1)
-			let step=44
-			# sub invokes this,in this case,exit whole.
-			exit 1
+			[ $DEBUG -gt 1 ] && echo "[func rewowrk_or_exit_whole said] in '1' choice."
+			break
 			;;
 		2)
-			let step=1
+			actively
 			break
 			;;
 		*)
@@ -29,4 +21,5 @@ function rework_or_exit_whole(){
 			;;
 		esac
 	done
+	return 0
 }

@@ -55,7 +55,12 @@ base
 	provides 2 variables:1) ABSROOT 2) FUNCPATH 
 	if microsoft's MingGW env,seq() definiation will add.
 checkvalidor.sh
-
+	check $1 is given,$1 is a directory's name.
+	check $1 is a valid directory
+	$1 valid when:
+	is a exists dir,
+	has a .token
+	Not have a done file.
 help_of_find.sh
 	no argument.
 	return "No Way" if can not find any ".token" file.
