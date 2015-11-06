@@ -8,8 +8,7 @@ project_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 . $project_dir/conf/abs.conf
 . ${FUNCPATH}/base 2>/dev/null
 
-# first test,if it has no global variable 'passengers' yet,function will fastly return a warning msg.
-step=1
+# disable all debug infomations of each function.
 DEBUG=0
 
 echotest "the first test started."
@@ -48,8 +47,6 @@ touch  ${ABSROOT}/temp/temp11/.token
 # invoking now!
 actively
 # must choice 1
-iisr "$? -eq 1000"
-huali
 
 #house keeping
 rm -rf ${ABSROOT}/temp/temp11/

@@ -12,18 +12,17 @@ function upload_all_except_ignores(){
 	# first we will check if "$1" is given,if not , if "./uploads" is exists
 	[[ $DEBUG > 1 ]] && echotest "\$#==$# and \$1==${1}"
 
-	# check length of arguments.
-	if [ $# -lt 1 ];then
-		echo Usage: "$0" THE_UPLOAD_DIRECTORY
-		return 20
-	fi
-	
 	# invoke another func:checkvalidor.
 	checkvalidor "$1"	
-	if test $? -ne 0 
+	keepd0=$?
+	
+	[ $DEBUG -gt 1 ] && echo "[function upload_all_except_ignores said] \$\?==$keepd0 ."
+
+	if test $keepd0 -ne 0 
 	then
 		[ $DEBUG -gt 1 ] && echo "[function upload_all_except_ignores said] $1 is not a valid directory."
-		return 10
+		rework_or_exit_whole
+		return 20
 	fi
 
 	#ignores keeps some files that no need be encryed.
