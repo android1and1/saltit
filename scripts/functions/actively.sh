@@ -18,12 +18,8 @@ function actively(){
 		2)
 			# input mine
 			read -p "enter the directory name: " dirname
-			checkvalidor $dirname
-			if [ $? -eq 0 ];then
-				upload_all_except_ignores $dirname
-			else
-				echo no valid directory\! exit.
-			fi
+
+			upload_all_except_ignores $dirname
 			break
 			;;
 		3)
