@@ -1,5 +1,8 @@
 #!/bin/bash
 function checkvalidor(){
+	if [ $DEBUG -gt 2 ];then
+		echo "[func checkvalidor said ] \$1==$1"
+	fi
 	# $1 is dirname which contains pre_encoded_file(s)
 	# check dirname is exists.
 	# check it has a '.token' file under the dir.
