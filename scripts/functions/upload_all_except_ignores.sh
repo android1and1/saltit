@@ -16,12 +16,13 @@ function upload_all_except_ignores(){
 	checkvalidor "$1"	
 	keepd0=$?
 	
+	#[ $DEBUG -eq 0 ] && echo "[function upload_all_except_ignores said] \$\?==$keepd0 ."
 	[ $DEBUG -gt 1 ] && echo "[function upload_all_except_ignores said] \$\?==$keepd0 ."
 
 	if test $keepd0 -ne 0 
 	then
 		[ $DEBUG -gt 1 ] && echo "[function upload_all_except_ignores said] $1 is not a valid directory."
-		rework_or_exit_whole
+		#[ $DEBUG -eq 0 ] && echo "[function upload_all_except_ignores said] $1 is not a valid directory."
 		return 20
 	fi
 

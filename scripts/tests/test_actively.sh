@@ -21,8 +21,8 @@ touch  ${ABSROOT}/temp/temp11/.token
 touch  ${ABSROOT}/temp/temp11/a
 touch  ${ABSROOT}/temp/temp11/b
 touch  ${ABSROOT}/temp/temp11/c
-touch  ${ABSROOT}/temp/temp11/.ignores
 touch  ${ABSROOT}/temp/temp11/d
+touch  ${ABSROOT}/temp/temp11/.ignores
 echo 'a b'>>${ABSROOT}/temp/temp11/.ignores
 touch ${ABSROOT}/temp/temp11/.done
 echotest "the second test:has a '.token' file  and a '.done' file."
@@ -44,8 +44,12 @@ huali
 # the 5th test
 echotest "the 5th test:when choice order 1,will display invoking function\'s name."
 touch  ${ABSROOT}/temp/temp11/.token
+if [ -f "${ABSROOT}/temp/temp11/.done" ];then
+	rm "${ABSROOT}/temp/temp11/.done"
+fi
+echo "c" > ${ABSROOT}/temp/temp11/.ignores
 # invoking now!
-actively
+echotest "$(actively)"
 # must choice 1
 
 #house keeping
