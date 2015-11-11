@@ -1,13 +1,13 @@
 #!/bin/bash
-# first of first,include abs root(directory) name.
-# get a global variable -- "FUNCPATH"
+# the famous 'quartet'.
 project_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 . $project_dir/conf/abs.conf
 . ${FUNCPATH}/base 2>/dev/null
 
 TESTDIR="${FUNCPATH}/temp"
 mkdir -p $TESTDIR
-split_if_ness ${cur_dir}/scripts/functions/abigfile ${TESTDIR}
+split_if_ness ${ABSROOT}/scripts/functions/abigfile ${TESTDIR}
+
 # do house keeping.
 rm -rf $TESTDIR
-echo 'removed test data(s).'
+echotest 'removed test data(s).'
