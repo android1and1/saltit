@@ -24,12 +24,17 @@ huali
 # 3nd test
 echotest "3nd test : check filename,correctly?" 
 filename="$( ls $UPLOADS/*data )"
-iisr "$filename=*live1.data"
+if [[ "$filename" == *"live1.data" ]]
+then
+	echo "::TRUE:: ""$filename""==""*live1.data"
+else
+	echo "::ERROR:: ""$filename""==""*live1.data"
+fi
 
 # 4nd test
-echotest "4th test: transfer code to function:splitXXX,if file too big."
+#echotest "4th test: transfer code to function:splitXXX,if file too big."
 # use scripts/functions/abigfile
-salteach "${FUNCPATH}/abigfile" "00"
+#salteach "${FUNCPATH}/abigfile" "00"
 
 
 
