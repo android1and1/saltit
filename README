@@ -49,10 +49,22 @@ in developping.
 2015-10-30 disable 'token' ,only '.token' is valid (MacBook Air)
 
 [core functions]
+abs.conf
+	in fact,it is 'abs.sh'.
+	it run 'uname -a',extract the os infomation,let us find each os(machine)'s directories.
+	provides some core global variable
+	1)ABSROOT
+	2)FUNCPATH
+
 actively.sh
 	
 base
-	provides 2 variables:1) ABSROOT 2) FUNCPATH 
+	provides 3 variables:1) SIMPLE_PASSWORD 2) SHARE_D 3) UPLOADS
+	provides some functions for debugging or some purposes:
+	function huali -- separator each test in one debugging prossecceing.
+	function iisr -- a judgement,remember when judge two string if equal,use '"$var" = "CONST"' format,empty,quotes.
+	function include_all -- let all function included into the shell env.
+	
 	if microsoft's MingGW env,seq() definiation will add.
 checkvalidor.sh
 	check $1 is given,$1 is a directory's name.
