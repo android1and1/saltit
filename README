@@ -93,6 +93,17 @@ upload_all_except_ignores.sh
 	echo to stdout a warnning msg if the dir has a '.done' file,
 	in this case,touch a '.done' file at last,
 	echo to stdout a list(filenames) if all is right.
+
+salteach.sh
+	$1 is a valid file,no more than 4M(templary defination)
+	$2 is a simple-plain-password,like:0 00 01..
+	return status code.
+
+offsalteach.sh
+	it is a reverser of 'salteach'.
+	$1 is a token-file(which encryed 'okay' string)
+	$2 is the object-file(encryed).
+	return status code.
 	
 [Notices]
 1,dont rely checking arguments length,in dirctly layer(test the base function),arguments length will tell us 

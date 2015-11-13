@@ -31,13 +31,14 @@ else
 	echo "::ERROR:: ""$filename""==""*live1.data"
 fi
 
-# 4nd test
-#echotest "4th test: transfer code to function:splitXXX,if file too big."
-# use scripts/functions/abigfile
-#salteach "${FUNCPATH}/abigfile" "00"
-
-
-
+# 4th test
+echotest "4th test: handle once and once.."
+salteach "${FUNCPATH}/base" "02"
+salteach "${FUNCPATH}/checkvalidor.sh" "02"
+ls ${UPLOADS}
+sleep 1  # give me a chance see what is in dir.
+ls ${FUNCPATH} # give me a chance see the origin file:base,if it still exists?
+sleep 1
 
 # do some house keeping
 rm -rf ${UPLOADS}/*
