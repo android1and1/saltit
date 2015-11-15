@@ -28,35 +28,41 @@ upload_all_except_ignores ${ABSROOT}/temp/nothisdir
 # and it failure.try again
 huali
 
+# 3rd test(real test)
+echotest "3rd test:real files,has .token,no .done"
 # make a temprary dir
-TEMPD="$ABSROOT""/uploads"
+TEMPD="$ABSROOT""/iwantupload"
 mkdir -p "$TEMPD"	
 touch "$TEMPD""/.token"
 touch "$TEMPD""/"{a,b,c,d,A,B,C,D}.txt
 touch "$TEMPD"/.ignores 
 echo "a.txt A.txt" > "$TEMPD""/.ignores"
- 
-# real test...
-
-echotest "3rd test:real files,has .token,no .done"
 upload_all_except_ignores "$TEMPD"
-
 huali
 
-#because the 3rd test pass,means:at last func will append a '.done' to the directory,
-# so invoke func:upload_all_except_ignores will failure by checkout a '.done' token file.
 # the 4th test
-echotest "the 4th test:because last test leave a .done token file,this time will lost."
-upload_all_except_ignores "$TEMPD"
-
+echotest "the 4th test:last test leave a .done token file,so,func:checkvalidor will says it not a good dir."
+checkvalidor "$TEMPD"
+iisr "$? -eq 20"
 # yes,it not work again,but if we remove the ./.done?
+rm "$TEMPD"/.done
+checkvalidor "$TEMPD"
+iisr "$? -eq 0"
 # not forget 'huali'
 huali
 
 # the 5th test
-echotest "the 5th test,remove .done,then invoke again(will work)."
-rm "$TEMPD""/.done"
-upload_all_except_ignores "$TEMPD"
- 
+echotest "the '5TH TEST',remove .done,then invoke again(will work)."
+echo ''>"$TEMPD""/.ignores"
+
+# check filelist each name contains whole path,or not?
+upresults=$( upload_all_except_ignores "$TEMPD")
+echotest "\$upresults==${upresults}"
+
+# 6th test 
+#echotest "the 6th test,output whole path."
+# rm "$TEMPD""/.done"
+# upload_all_except_ignores "$TEMP"
+
 # do homekeeping
 rm -rf "$TEMPD"

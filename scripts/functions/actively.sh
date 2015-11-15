@@ -18,7 +18,14 @@ function actively(){
 				rework_or_exit_whole
 				break
 			fi
-			upload_all_except_ignores $decide
+			# get list.
+			filelist=$(upload_all_except_ignores $decide)
+
+			for eachfile in $filelist
+			do
+				salteach eachfile "$usepass"			
+			done
+
 			break
 			;;
 		2)

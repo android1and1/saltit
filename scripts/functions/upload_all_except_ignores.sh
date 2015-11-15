@@ -12,19 +12,9 @@ function upload_all_except_ignores(){
 	# first we will check if "$1" is given,if not , if "./uploads" is exists
 	[[ $DEBUG > 1 ]] && echotest "\$#==$# and \$1==${1}"
 
-	# invoke another func:checkvalidor.
-#	checkvalidor "$1"	
-#	keepd0=$?
 	
 #	[ $DEBUG -eq 0 ] && echo "[function upload_all_except_ignores said] \$\?==$keepd0 ."
 #	[ $DEBUG -gt 1 ] && echo "[function upload_all_except_ignores said] \$\?==$keepd0 ."
-
-#	if test $keepd0 -ne 0 
-#	then
-#		[ $DEBUG -gt 1 ] && echo "[function upload_all_except_ignores said] $1 is not a valid directory."
-#		#[ $DEBUG -eq 0 ] && echo "[function upload_all_except_ignores said] $1 is not a valid directory."
-#		return 20
-#	fi
 
 	#ignores keeps some files that no need be encryed.
 	declare -a ignores 
@@ -35,8 +25,8 @@ function upload_all_except_ignores(){
 
 
 	alls=( $( ls "$1" ) )
-	test $DEBUG -gt 1 && echotest "\$alls==${alls[@]}"
-	test $DEBUG -gt 1 && echotest "\$1==${1}"
+	[ $DEBUG -gt 1 ] && echo "[function upload_all_except_ignores said] \$alls==${alls[@]}"
+	[ $DEBUG -gt 1 ] && echo "[function upload_all_except_ignores said] \$1==${1}"
 
 
 	# check variable:alls
@@ -45,6 +35,7 @@ function upload_all_except_ignores(){
 	if test -f "$1"/.ignores
 	then
 		ignores=( `cat "$1"/.ignores` )
+		[[ $DEBUG > 2 ]] && echo "[function upload_all_except_ignores said] \$ignores==${ignores}"
 		# run loop for match each ignore.	
 		let outmax="${#alls[@]}-1"
 		if test $DEBUG -gt 1;then
@@ -71,7 +62,13 @@ function upload_all_except_ignores(){
 	fi
 
 	# Till here,we got result,which should be encryed.
-	echo ${alls[@]}
+	# Notice that,must all are abs-pathname.
+	#echo ${alls[@]}
+	for ii in ${alls[@]}
+	do
+		echo "$1""/""${ii}"
+	done
+
 	# make a token,so next invoke this will exit --- dont do again.
 	touch "$1""/.done"	
 	unset i ii  innermax outmax alls ignores 

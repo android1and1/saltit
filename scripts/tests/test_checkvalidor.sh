@@ -20,7 +20,7 @@ mkdir -p $TEMPD
 echotest "1st test start."
 # a not real dirname for "$1"
 checkvalidor /home/nothisdir/
-iisr "$? -eq 30"
+iisr "$? -ne 30"
 checkvalidor "$TEMPD" 
 iisr "$? -eq 15"
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-# filename offeach.sh (a conversert of 'salteach')
+# filename offsalteach.sh (a conversert of 'salteach')
 
 function offsalteach(){
 	# $1 is a token file,be encoded alreay,we use 'guess' func,get its plain text.
