@@ -15,15 +15,19 @@ echotest "the first test started."
 echotest "$( actively )"
 huali
 
+# check env var:UPLOADS
+#echotest "\$UPLOADS==$UPLOADS"
+#exit
+
 # but still has warnning.
 mkdir -p ${ABSROOT}/temp/temp11/
 touch  ${ABSROOT}/temp/temp11/.token
-touch  ${ABSROOT}/temp/temp11/a
-touch  ${ABSROOT}/temp/temp11/b
-touch  ${ABSROOT}/temp/temp11/c
-touch  ${ABSROOT}/temp/temp11/d
-touch  ${ABSROOT}/temp/temp11/.ignores
-echo 'a b'>>${ABSROOT}/temp/temp11/.ignores
+echo 'Data-a' >  ${ABSROOT}/temp/temp11/a
+echo 'Data-b' >  ${ABSROOT}/temp/temp11/b
+echo 'c' >  ${ABSROOT}/temp/temp11/c
+echo 'd' >  ${ABSROOT}/temp/temp11/d
+echo 'a'>>${ABSROOT}/temp/temp11/.ignores
+echo -e 'b\nc' >> ${ABSROOT}/temp/temp11/.ignores
 touch ${ABSROOT}/temp/temp11/.done
 echotest "the second test:has a '.token' file  and a '.done' file."
 echotest "$( actively )"
@@ -48,11 +52,15 @@ if [ -f "${ABSROOT}/temp/temp11/.done" ];then
 	rm "${ABSROOT}/temp/temp11/.done"
 fi
 echo "c" > ${ABSROOT}/temp/temp11/.ignores
-# invoking now!
-echotest "$(actively)"
-# must choice 1
+# invoking now! (must choice 1)
+actively
+# successfully?
+iisr "$? -eq 0"
+# has result file(s)?
+set $( ls ${UPLOADS}/encoded_*data )
+# {a,b,c,d}.txt and c.txt in '.ignores'.
+iisr "$# -eq 3"
 
 #house keeping
 rm -rf ${ABSROOT}/temp/temp11/
-
-echotest "Test Done."
+find ${UPLOADS} -type f -name "encoded*data" -exec rm {} \;

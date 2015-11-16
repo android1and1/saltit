@@ -1,5 +1,5 @@
 #!/bin/bash
-# filename:test_offeach.sh
+# filename:test_offsalteach.sh
 
 # first of first,include abs root(directory) name.
 # then start 'Quartet Limited'
@@ -27,5 +27,5 @@ salteach ${ABSROOT}/conf/abs.conf '21'
 # its name will be "${UPLOADS}/encoded_abs.conf.data"(details will displays in 'scripts/function/salteach.sh'
 sleep 1
 
-offeach "${SHARE_D}/okaies/encoded_okay_21" ${UPLOADS}/encoded_abs.conf.data
+offsalteach "${SHARE_D}/okaies/encoded_okay_21" ${UPLOADS}/encoded_abs.conf.data
 iisr "$? -eq 0"

@@ -109,3 +109,14 @@ offsalteach.sh
 1,dont rely checking arguments length,in dirctly layer(test the base function),arguments length will tell us 
 if the function received hoped arguments,but in 2+ layer invokes,first argument has changed,arguments length will
 add 1.
+
+[skill1]
+in 'scripts/tests/test_actively.sh':
+set $( ls ${UPLOADS}/encoded_*data )
+echo $#
+means:
+1> bullitin command:set(no optional),give a list of arguments,sample:
+	set a b c
+	echo $1
+	>> a
+2> after invokes 'set' command,then,we can measure argument's length,in this test case,it is 3(a,b,d.txt).

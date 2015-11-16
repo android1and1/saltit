@@ -20,5 +20,5 @@ function offsalteach(){
 	# get $2's basename
 	from2=$( basename "$2" )
 
-	openssl enc -d -aes256 -in $2 -kfile "${SHARE_D}""/md5s/md5sum_""$password" -out "${DOWNLOADS}""/decoded_""$from2" 2>${SHARE_D}/isee
+	openssl enc -d -aes256 -in $2 -kfile "${SHARE_D}""/md5s/md5sum_""$password" -out "${DOWNLOADS}""/decoded_""$from2" 2>${UPLOADS}/stdout.error
 }
