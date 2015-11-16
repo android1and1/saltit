@@ -29,3 +29,13 @@ sleep 1
 
 offsalteach "${SHARE_D}/okaies/encoded_okay_21" ${UPLOADS}/encoded_abs.conf.data
 iisr "$? -eq 0"
+# offsalt,the file name will be decoded_encoced_abs.conf
+iisr "-f ${DOWNLOADS}/decoded_encoded_abs.conf"
+
+# stay a while for looking for.
+# at last ,do home keeping.
+ls ${DOWNLOADS}
+sleep 1
+find ${UPLOADS} -type f -name "encoded*data" -exec rm {} \;
+rm -rf ${DOWNLOADS}/*
+
