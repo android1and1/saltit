@@ -9,7 +9,8 @@ function rework_or_exit_whole(){
 		case $REPLY in 
 		1)
 			[ $DEBUG -gt 1 ] && echo "[func rewowrk_or_exit_whole said] in '1' choice."
-			break
+			#break
+			exit 1
 			;;
 		2)
 			actively

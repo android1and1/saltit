@@ -9,13 +9,6 @@ function upload_all_except_ignores(){
 	# and re-list all files,they need be encryed,except files in .ignore.
 	# return the list via 'echo' event.
 
-	# first we will check if "$1" is given,if not , if "./uploads" is exists
-	[[ $DEBUG > 1 ]] && echotest "\$#==$# and \$1==${1}"
-
-	
-#	[ $DEBUG -eq 0 ] && echo "[function upload_all_except_ignores said] \$\?==$keepd0 ."
-#	[ $DEBUG -gt 1 ] && echo "[function upload_all_except_ignores said] \$\?==$keepd0 ."
-
 	#ignores keeps some files that no need be encryed.
 	declare -a ignores 
 
@@ -25,12 +18,6 @@ function upload_all_except_ignores(){
 
 
 	alls=( $( ls "$1" ) )
-	[ $DEBUG -gt 1 ] && echo "[function upload_all_except_ignores said] \$alls==${alls[@]}"
-	[ $DEBUG -gt 1 ] && echo "[function upload_all_except_ignores said] \$1==${1}"
-
-
-	# check variable:alls
-
 
 	if test -f "$1"/.ignores
 	then
@@ -70,8 +57,9 @@ function upload_all_except_ignores(){
 	done
 
 	# make a token,so next invoke this will exit --- dont do again.
-	touch "$1""/.done"	
 	unset i ii  innermax outmax alls ignores 
+	# NOTICE :: Only Till Here,function do its work totally,so check its return code if it is '0' is very important for
+	# Other Funcs Or Programs.
 	return 0
 }
 # ------------- the tropic of capricorn 

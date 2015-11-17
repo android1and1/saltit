@@ -11,15 +11,8 @@ project_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 # disable all debug infomations of each function.
 DEBUG=0
 
-echotest "the first test started."
-echotest "$( actively )"
-huali
-
-# check env var:UPLOADS
-#echotest "\$UPLOADS==$UPLOADS"
-#exit
-
-# but still has warnning.
+# first test.
+echotest "the 1st test:has a '.token' file  and has not '.done' file."
 mkdir -p ${ABSROOT}/temp/temp11/
 touch  ${ABSROOT}/temp/temp11/.token
 echo 'Data-a' >  ${ABSROOT}/temp/temp11/a
@@ -28,26 +21,11 @@ echo 'c' >  ${ABSROOT}/temp/temp11/c
 echo 'd' >  ${ABSROOT}/temp/temp11/d
 echo 'a'>>${ABSROOT}/temp/temp11/.ignores
 echo -e 'b\nc' >> ${ABSROOT}/temp/temp11/.ignores
-touch ${ABSROOT}/temp/temp11/.done
-echotest "the second test:has a '.token' file  and a '.done' file."
 echotest "$( actively )"
 huali
 
-#the 3rd test
-rm ${ABSROOT}/temp/temp11/.done
-echotest "the third test: has a .token file (the 'done' file has removed)."
-echotest "$(actively)"
-huali
-
-# the 4th test
-echotest "the 4th test: has None(no '.done',no '.token')."
-rm  ${ABSROOT}/temp/temp11/.token
-echotest "$(actively)"
-huali
-
-# the 5th test
-echotest "the 5th test:when choice order 1,will display invoking function\'s name."
-touch  ${ABSROOT}/temp/temp11/.token
+#the 2nd test
+echotest "the 2nd test: has a .token file (the 'done' file has removed)."
 if [ -f "${ABSROOT}/temp/temp11/.done" ];then
 	rm "${ABSROOT}/temp/temp11/.done"
 fi
@@ -60,6 +38,21 @@ iisr "$? -eq 0"
 set $( ls ${UPLOADS}/encoded_*data )
 # {a,b,c,d}.txt and c.txt in '.ignores'.
 iisr "$# -eq 3"
+huali
+
+# the 3rd test
+echotest "the 3rd test:can usepass be a odd name?"
+if [ -f "${ABSROOT}/temp/temp11/.done" ];then
+	rm "${ABSROOT}/temp/temp11/.done"
+fi
+# invoing!
+actively
+# successfully?
+iisr "$? -eq 0"
+# usepass now=?
+echotest "\$usepass==$usepass"
+echo $SIMPLE_PASSWORD | grep --silent "$usepass"
+iisr "$? -eq 0"
 
 #house keeping
 rm -rf ${ABSROOT}/temp/temp11/

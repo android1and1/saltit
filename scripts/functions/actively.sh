@@ -10,30 +10,48 @@ function actively(){
 		return 2
 	fi
 
-	declare usepass="00"
+	usepass="00"
+	hunglow='################################################################'
+	echo $hunglow
 	echo 'the first step:choice a simple pass,defaul is "00".'
+	echo $hunglow
 	select decide in "00 (default)" "i_want_input_mine:" 
 	do
 		case $REPLY in
-		2)
-			read -p "enter your simple password,like '0','1','01'..." usepass 
-			break
-			;;
-		*)
+		1)
 			# means use default '00' as $usepass.
 			break
 			;;
+		2)
+			read -p "enter your simple password,like '0','1','01'...  " usepass 
+			# check "$usepass"
+			echo ${SIMPLE_PASSWORD} | grep --quiet $usepass
+			if [ $? -ne 0 ];then
+				rework_or_exit_whole
+				break
+			fi
+			break
+			;;
+		3)
+			REPLY=
+			echo "only '1' '2' is option."
+			;;
 		esac
 	done
-			
 
+	
+
+	echo $hunglow
 	echo 'the second step:use default directory or else?'
+	echo $hunglow
 	select decide in "${founds}"" (default)" "i_want_input_mine:" "exit"
 	do
 		case $REPLY in
 		1)
 			checkvalidor $founds
 			if [ "$?" -ne 0 ];then
+				echo -e "\033[1;31m::ERROR:: \033[0m""$decide Is Not A Valid Directory."
+				sleep .5
 				rework_or_exit_whole
 				break
 			fi
@@ -43,8 +61,9 @@ function actively(){
 			for eachfile in $filelist
 			do
 				salteach $eachfile "$usepass"			
-#				salteach $eachfile "00"			
 			done
+			# not forget,touch a tokenfile:.done to $founds
+			touch $founds/.done
 
 			break
 			;;
@@ -59,8 +78,10 @@ function actively(){
 			for eachfile in $filelist
 			do
 				salteach $eachfile "$usepass"			
-			#	salteach $eachfile "00"			
 			done
+
+			# not forget,touch a tokenfile:.done to $founds
+			touch $founds/.done
 
 			break
 			;;
