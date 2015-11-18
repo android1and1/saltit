@@ -10,18 +10,19 @@ project_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 
 # disable all debug infomations of each function.
 DEBUG=0
-tempdir=${ABSROOT}/temp/temp12
-mkdir -p $tempdir
-echo 'data here..' > $tempdir/a.file
-echo 'data here..' > $tempdir/b.file
-echo 'data here..' > $tempdir/c.file
-echo 'data here..' > $tempdir/d.file
-echo 'a.file' > $tempdir/.ignore
+TEMPDIR=${ABSROOT}/temp/temp13
+mkdir -p $TEMPDIR
+echo 'data here..' > $TEMPDIR/a.file
+echo 'data here..' > $TEMPDIR/b.file
+echo 'data here..' > $TEMPDIR/c.file
+echo 'data here..' > $TEMPDIR/d.file
+echo 'a.file' > $TEMPDIR/.ignore
 
-touch $tempdir/.token
+touch $TEMPDIR/.token
 actively
 echo ${SIMPLE_PASSWORD} | grep --quiet $usepass
 iisr "$? -eq 0"
 # home keeping
-rm -rf $tempdir
+rm -rf $TEMPDIR
 rm -rf ${UPLOADS}/*data
+rm -rf ${UPLOADS}/*flag

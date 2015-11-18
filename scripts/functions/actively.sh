@@ -10,10 +10,12 @@ function actively(){
 		return 2
 	fi
 
+	old_PS3=$PS3
+	PS3="Input Your Choice(Number):  "
 	usepass="00"
-	hunglow='################################################################'
+	hunglow='#############################################################################'
 	echo $hunglow
-	echo 'the first step::: CHOICE A SIMPLE PASS,DEFAUL IS "00".'
+	echo 'the first step::: USE DEFAULT PASSWORD(00) OR INPUT YOURS?'
 	echo $hunglow
 	echo
 	select decide in "00 (default)" "i_want_input_mine:" 
@@ -24,7 +26,7 @@ function actively(){
 			break
 			;;
 		2)
-			read -p "enter your simple password,like '0','1','01'...  " usepass 
+			read -p "[Enter Simple Passwd,Like '0','1','01'...]   " usepass 
 			# check "$usepass"
 			echo ${SIMPLE_PASSWORD} | grep --quiet $usepass
 			if [ $? -ne 0 ];then
@@ -40,13 +42,11 @@ function actively(){
 		esac
 	done
 
-	
-
 	echo $hunglow
-	echo 'the second step::: USE DEFAULT DIRECTORY OR ELSE?'
+	echo 'the second step::: KEEP ON(USE DEFAULT DIRECTORY TO UPLOADING) OR TURN BACK?'
 	echo $hunglow
 	echo
-	select decide in "${founds}"" (default)" "i_want_input_mine:" "exit"
+	select decide in "${founds}"" (default)"  "rework" "exit"
 	do
 		case $REPLY in
 		1)
@@ -66,25 +66,13 @@ function actively(){
 			done
 			# not forget,touch a tokenfile:.done to $founds
 			touch $founds/.done
+			# not forget attach 'okay' token file.
+			cp ${SHARE_D}/okaies/encoded_okay_$usepass ${UPLOADS}/this.flag
 
 			break
 			;;
 		2)
-			# input mine
-			read -p "enter the directory name: " dirname
-			checkvalidor "$dirname"
-
-			# get list.
-			filelist=$(upload_all_except_ignores $dirname)
-
-			for eachfile in $filelist
-			do
-				salteach $eachfile "$usepass"			
-			done
-
-			# not forget,touch a tokenfile:.done to $founds
-			touch $founds/.done
-
+			actively
 			break
 			;;
 		3)
@@ -97,4 +85,5 @@ function actively(){
 			;;
 		esac
 	done
+	PS3=${old_PS3}
 }

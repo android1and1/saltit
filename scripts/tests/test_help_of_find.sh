@@ -20,11 +20,29 @@ touch ${ABSROOT}/temp/temp11/token
 echotest "$( help_of_find )"
 huali
 
-# last test
-rm ${ABSROOT}/temp/temp11/.token
+rm ${ABSROOT}/temp/temp11/token
 echotest "3th:has a '.token' file, and its directory."
 touch ${ABSROOT}/temp/temp11/.token
 echotest "$( help_of_find )"
+huali
+
+echotest "All of 2 dirs has .token."
+# parent dir has .done,its sun dir has no .done but a .token.
+TEMPDIR=${ABSROOT}/temp/temp12
+mkdir -p $TEMPDIR/sundir/
+touch $TEMPDIR/.done
+touch $TEMPDIR/sundir/{a,b,c,d}.text
+touch $TEMPDIR/sundir/.token
+# because temp11/ and temp12/ both of all has '.token',the func will found 2,then return error status code.
+# stdout will tell us "No Way".
+echotest "$(help_of_find)"
+huali
+
+echotest "rm temp11\'s .token,keep temp12\'s .token,then run."
+rm ${ABSROOT}/temp/temp11/.token
+echotest "$(help_of_find)"
 
 # HOMEKEEPING!
-rm -rf ${ABSROOT}/temp/*
+rm -rf ${ABSROOT}/temp/temp11/
+rm -rf ${ABSROOT}/temp/temp12/
+

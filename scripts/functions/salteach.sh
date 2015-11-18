@@ -22,7 +22,7 @@ function salteach(){
 		return 1
 	fi
 
-	from2=$( ls "${SHARE_D}""/md5s/"*${2} )
+	from2=$( ls "${SHARE_D}""/md5s/"*_${2} )
 	from1="$( basename $1 )"
 	openssl enc -aes256 -in $1 -kfile $from2 -out "${UPLOADS}/""encoded_"${from1}".data" 	
 }	
