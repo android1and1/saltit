@@ -13,8 +13,9 @@ function actively(){
 	usepass="00"
 	hunglow='################################################################'
 	echo $hunglow
-	echo 'the first step:choice a simple pass,defaul is "00".'
+	echo 'the first step::: CHOICE A SIMPLE PASS,DEFAUL IS "00".'
 	echo $hunglow
+	echo
 	select decide in "00 (default)" "i_want_input_mine:" 
 	do
 		case $REPLY in
@@ -42,8 +43,9 @@ function actively(){
 	
 
 	echo $hunglow
-	echo 'the second step:use default directory or else?'
+	echo 'the second step::: USE DEFAULT DIRECTORY OR ELSE?'
 	echo $hunglow
+	echo
 	select decide in "${founds}"" (default)" "i_want_input_mine:" "exit"
 	do
 		case $REPLY in

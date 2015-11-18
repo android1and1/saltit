@@ -14,4 +14,9 @@ project_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 DEBUG=0
 
 actively
+if test $? -ne 0
+then
+	echo something wrong happened\.
+fi
+
 echo 'Done.'
