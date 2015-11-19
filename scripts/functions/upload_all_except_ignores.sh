@@ -5,7 +5,7 @@
 # ------------- the tropic of cancer
 function upload_all_except_ignores(){
 	# invoke another function:checkvalidor,for check the uploading directory,
-	# obeys the files: '.ignore" include all need-encrypt file(s),
+	# obeys the files: '.ignores" include all need-encrypt file(s),
 	# and re-list all files,they need be encryed,except files in .ignore.
 	# return the list via 'echo' event.
 

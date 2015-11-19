@@ -7,7 +7,8 @@
 project_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 . $project_dir/conf/abs.conf
 . ${FUNCPATH}/base 2>/dev/null
-#DEBUG=0
+
+DEBUG=0
 
 # first test
 echotest "first test:share/ exists?"
@@ -27,15 +28,17 @@ salteach ${ABSROOT}/conf/abs.conf '21'
 # its name will be "${UPLOADS}/encoded_abs.conf.data"(details will displays in 'scripts/function/salteach.sh'
 sleep 1
 
-offsalteach "${SHARE_D}/okaies/encoded_okay_21" ${UPLOADS}/encoded_abs.conf.data
+offsalteach ${UPLOADS}/encoded_abs.conf.data "21"
 iisr "$? -eq 0"
 # offsalt,the file name will be decoded_encoced_abs.conf
 iisr "-f ${DOWNLOADS}/decoded_encoded_abs.conf"
+#cat -n "${DOWNLOADS}/decoded_encoded_abs.conf"
+huali
 
-# stay a while for looking for.
-# at last ,do home keeping.
-ls ${DOWNLOADS}
-sleep 1
+# 3rd
+
+# home keeping
 find ${UPLOADS} -type f -name "encoded*data" -exec rm {} \;
-rm -rf ${DOWNLOADS}/*
+rm -rf ${DOWNLOADS}/decoded_encoded_*
+
 
