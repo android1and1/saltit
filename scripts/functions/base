@@ -14,7 +14,7 @@ FILENAME=$( basename "$0" 2>/dev/null )
 declare DEBUGTITLE="[${FILENAME}  +]"
 
 # all of simple password
-declare SIMPLE_PASSWORD="0 00 01 02 03 11 12 13 21 22 23 31 32 33"
+declare SIMPLE_PASSWORD="0 00 01 02 03 10 11 12 13 20 21 22 23 30 31 32 33"
 
 # share dir
 declare SHARE_D="${ABSROOT}/share"
