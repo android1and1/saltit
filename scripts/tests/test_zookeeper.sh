@@ -21,18 +21,17 @@ touch $TEMPDIR/.token
 echo 'a.txt' > $TEMPDIR/.ignores
 # create real data file(crypted)
 actively
-ls ${UPLOADS}
-sleep 1
+#ls ${UPLOADS}
+#sleep 1
 # see some lines
-cat ${UPLOADS}/encoded_c.txt.data
-sleep 2
+#cat ${UPLOADS}/encoded_c.txt.data
 
 zookeeper $UPLOADS
 iisr "$? -eq 0"
-filelists=$(ls $DOWNLOADS)
-echotest "$filelists"
+#filelists=$(ls $DOWNLOADS)
+#echotest "$filelists"
 # see some lines
-tail ${DOWNLOADS}/deco*
+#tail ${DOWNLOADS}/deco*
 huali
 
 #echotest "2nd test..."
@@ -41,5 +40,6 @@ huali
 # home keeping
 sleep 1
 rm -rf $UPLOADS/*data
+rm -rf $UPLOADS/this.flag
 rm -rf $DOWNLOADS/decoded_*
 rm -rf $TEMPDIR
