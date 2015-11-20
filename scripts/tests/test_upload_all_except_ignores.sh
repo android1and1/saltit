@@ -33,7 +33,21 @@ huali
 echotest "3rd test:can ignore files?"
 echo 'file1.txt file3.txt file5.txt file7.txt' > $TEMPD/.ignores
 result_files=$(upload_all_except_ignores $TEMPD)
-iisl "$result_files" "*file7.txt*" 
+iisl "$result_files" "*file8.txt*" 
+huali
+
+echotest "4th test:clip more files,then see what is be ignored."
+echo 'file2.txt file4.txt file8.txt' >> $TEMPD/.ignores
+result_files=$(upload_all_except_ignores $TEMPD)
+iisl "$result_files" "*file6.txt*" 
+huali
+
+echotest "5th test:what about .prefix files?"
+echo '' > $TEMPD/.ignores
+touch $TEMPD/.aline
+result_files=$(upload_all_except_ignores $TEMPD)
+echo ${result_files} | grep --silent ".aline"
+iisr "$? -eq 1"
 huali
 
 # do homekeeping

@@ -44,10 +44,10 @@ function iisr(){
 #	if test $1;then
 	eval "test $1"
 	if test $? -eq 0;then
-		echo "::TRUE:: ""$1" 
+		echo -en "\n::TRUE:: ""$1""\n" 
 	else
 	# add colorfully text
-		echo -e  "\033[1;31m::ERROR:: $1\033[0m" 
+		echo -en  "\n\033[1;31m::ERROR:: $1\033[0m\n" 
 	fi
 }
 # iisl=if i say like
@@ -61,10 +61,10 @@ function iisl(){
 	fi
 	if [[ $1 == $2 ]] 
 	then
-		echo "::TRUE:: ""$1==$2" 
+		echo -en "\n::TRUE::\n""$1==$2\n" 
 	else
 	# add colorfully text
-		echo -e  "\033[1;31m::ERROR:: $1==$2\033[0m" 
+		echo -en  "\n\033[1;31m::ERROR::\n$1==$2\033[0m\n" 
 	fi
 }
 
