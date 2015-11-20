@@ -7,7 +7,9 @@ split_if_ness(){
 	# $1 is bigfile prepare to be splited
 	# $2 is a directory store splitted files.
 	declare basenameofdollar1=$( basename $1 )
-	split -b 4m "$1"
+	# variable "WANTSIZE" is size string express like '4m'
+	#split -b 4m "$1"
+	split -b "$WANTSIZE" "$1"
 	# rename right now!
 	for name in $( ls x* )
 	do

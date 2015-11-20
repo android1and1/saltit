@@ -8,7 +8,7 @@ function tellsize(){
 	
 	# /1024/1024 change ll output from bytes to Million Bytes.
 	(( size=${display}/1024/1024 ))
-	if test $size -gt 4;then
+	if test $size -gt "$MAXSIZE";then
 		echo 'more' 
 	else
 		echo 'less' 

@@ -2,10 +2,11 @@
 # filename test_zookeeper.sh
 
 # first of first,include abs root(directory) name.
-# then start 'Quartet Limited'
+# then start the famous 'The Quartet'.
 # get some global variable -- "FUNCPATH" "ABSROOT" "include_all" "echotest" ..
 project_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 . $project_dir/conf/abs.conf
+. $project_dir/conf/options.conf
 . ${FUNCPATH}/base 2>/dev/null
 
 # disable all debug infomations of each function.

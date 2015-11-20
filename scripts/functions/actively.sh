@@ -12,13 +12,13 @@ function actively(){
 
 	old_PS3=$PS3
 	PS3="Input Your Choice(Number):  "
-	usepass="00"
+	usepass="$INITPASSNUMBER"
 	hunglow='#############################################################################'
 	echo $hunglow
-	echo 'the first step::: USE DEFAULT PASSWORD(00) OR INPUT YOURS?'
+	echo 'the first step::: USE DEFAULT PASSWORD OR INPUT YOURS?'
 	echo $hunglow
 	echo
-	select decide in "00 (default)" "i_want_input_mine:" 
+	select decide in "$INITPASSNUMBER (default)" "i_want_input_mine:" 
 	do
 		case $REPLY in
 		1)

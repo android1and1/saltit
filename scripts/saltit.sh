@@ -9,14 +9,9 @@ project_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 
 #no like scripts/tests/test_XXX,the project_dir exceed the working dir.
 . $project_dir/saltit/conf/abs.conf
+. $project_dir/saltit/conf/options.conf
 . ${FUNCPATH}/base 2>/dev/null
 
 DEBUG=0
-
 actively
-if test $? -ne 0
-then
-	echo something wrong happened\.
-fi
-
-echo 'Done.'
+echotest 'Done.'

@@ -21,5 +21,5 @@ function offsalteach(){
 	from1=$( basename "$1" )
 	essential1=${from1%\.*}
 
-	openssl enc -d -aes256 -in $1 -kfile "${SHARE_D}""/md5s/md5sum_""$password" -out "${DOWNLOADS}""/decoded_""$essential1" 2>${DOWNLOADS}/stdout.error
+	openssl enc -d -"$ALGORITHM" -in $1 -kfile "${SHARE_D}""/md5s/md5sum_""$password" -out "${DOWNLOADS}""/decoded_""$essential1" 2>${DOWNLOADS}/stdout.error
 }
