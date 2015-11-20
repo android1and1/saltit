@@ -17,11 +17,6 @@ function salteach(){
 	# ..
 	# all of them(hard problem),task is by its connector:maybe it is actively.sh
 	
-	if test $(tellsize $1) != "less"
-	then
-		return 1
-	fi
-
 	from2=$( ls "${SHARE_D}""/md5s/"*_${2} )
 	from1="$( basename $1 )"
 	openssl enc -aes256 -in $1 -kfile $from2 -out "${UPLOADS}/""encoded_"${from1}".data" 	

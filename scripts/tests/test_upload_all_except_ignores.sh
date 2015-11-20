@@ -24,7 +24,7 @@ TEMPD="$ABSROOT""/temp/iwantupload"
 mkdir -p "$TEMPD"	
 touch "$TEMPD""/.token"
 touch $TEMPD/file{1,2,3,4,5,6,7,8}.txt
-touch "$TEMPD"/.ignores 
+echo "" > "$TEMPD"/.ignores 
 result_files=$(upload_all_except_ignores $TEMPD)
 iisl "$result_files" "*file7.txt*" 
 huali
@@ -39,7 +39,7 @@ huali
 echotest "4th test:clip more files,then see what is be ignored."
 echo 'file2.txt file4.txt file8.txt' >> $TEMPD/.ignores
 result_files=$(upload_all_except_ignores $TEMPD)
-iisl "$result_files" "*file6.txt*" 
+iisl "$result_files" "*file6.txt" 
 huali
 
 echotest "5th test:what about .prefix files?"

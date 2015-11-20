@@ -41,7 +41,9 @@ function upload_all_except_ignores(){
 			do
 				if [[ ${alls[$i]} == ${ignores[$ii]} ]]
 				then
-					unset alls[i]
+					#unset alls[i]  ===== work also.
+					#unset alls[$i] ===== work also.
+					unset alls["$i"]
 				fi
 			done
 		done

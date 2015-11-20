@@ -53,17 +53,26 @@ function actively(){
 			checkvalidor $founds
 			if [ "$?" -ne 0 ];then
 				echo -e "\033[1;31m::ERROR:: \033[0m""$decide Is Not A Valid Directory."
-				sleep .5
+				sleep 1 
 				rework_or_exit_whole
 				break
 			fi
 			# get list.
 			filelist=$(upload_all_except_ignores $founds)
-
-			for eachfile in $filelist
+			for eachsize in $filelist
+			do
+				if [ $(tellsize $eachsize) = 'more' ];then
+					split_if_ness $eachsize $founds
+					echo $(basename $eachsize) >> $founds/.ignores 2>/dev/null 
+				fi
+			done
+			# extends $filelist,just rerun the func:upload_all_except_ignores
+			filelist=$(upload_all_except_ignores $founds)
+			for eachfile in ${filelist[@]}
 			do
 				salteach $eachfile "$usepass"			
 			done
+
 			# not forget,touch a tokenfile:.done to $founds
 			touch $founds/.done
 			# not forget attach 'okay' token file.

@@ -11,7 +11,7 @@ split_if_ness(){
 	# rename right now!
 	for name in $( ls x* )
 	do
-		mv $name ${2}/${basenameofdollar1}${name:1}
+		mv $name ${2}/${basenameofdollar1}"_"${name:1}
 	done
 }
 #-------------Tropic of Capricorn

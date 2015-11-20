@@ -13,9 +13,7 @@ huali
 itistime="2015 09 10"
 iisl "$itistime" "2015 *"
 huali
-iisl "$itistime" "2014 *"
-huali
-
 iisl "$itistime" "2015 09 *"
 huali
+iisl "$itistime" "2015*10"
 
