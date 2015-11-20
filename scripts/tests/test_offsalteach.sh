@@ -21,6 +21,11 @@ huali
 # second test
 echotest "second test:done?"
 
+# the DE_XXX directory must clearly.
+thisdown=$(dirname $UPLOADS)
+thisdown=$thisdown/DE_uploads
+mkdir $thisdown
+
 # use '21' simple password as origin,encryed a file(just a word:i love you?)
 # then give func:offeach as $2.
 
@@ -28,18 +33,18 @@ salteach ${ABSROOT}/conf/abs.conf '21'
 # if above line successfully,then,the $UPLOADS has a new file(data).
 # its name will be "${UPLOADS}/encoded_abs.conf.data"(details will displays in 'scripts/function/salteach.sh'
 sleep 1
-
 offsalteach ${UPLOADS}/encoded_abs.conf.data "21"
 iisr "$? -eq 0"
-# offsalt,the file name will be decoded_encoced_abs.conf
-iisr "-f ${DOWNLOADS}/decoded_encoded_abs.conf"
-#cat -n "${DOWNLOADS}/decoded_encoded_abs.conf"
-huali
 
-# 3rd
+echotest $thisdown
+# offsalt,the file name will be decoded_encoced_abs.conf
+iisr "-f ${thisdown}/decoded_encoded_abs.conf"
+cat -n "${thisdown}/decoded_encoded_abs.conf"
+huali
 
 # home keeping
 find ${UPLOADS} -type f -name "encoded*data" -exec rm {} \;
-rm -rf ${DOWNLOADS}/decoded_encoded_*
+rm -rf ${thisdown}/decoded_encoded_*
+rm -rf $thisdown
 
 
