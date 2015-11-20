@@ -1,5 +1,5 @@
 #!/bin/bash
-# filename:test_actively.sh
+# filename:test_actively2.sh
 
 # first of first,include abs root(directory) name.
 # then start 'Quartet Limited'
@@ -10,50 +10,33 @@ project_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 
 # disable all debug infomations of each function.
 DEBUG=0
+TEMPDIR=${ABSROOT}/temp/temp13
+mkdir -p $TEMPDIR
+echo 'data here..' > $TEMPDIR/a.file
+echo 'data here..' > $TEMPDIR/b.file
+echo 'data here..' > $TEMPDIR/c.file
+echo 'data here..' > $TEMPDIR/d.file
+echo 'a.file' > $TEMPDIR/.ignores  # only fool here,NOT "ignore" but "ignores"
 
-# first test.
-echotest "the 1st test:has a '.token' file  and has not '.done' file."
-mkdir -p ${ABSROOT}/temp/temp11/
-touch  ${ABSROOT}/temp/temp11/.token
-echo 'Data-a' >  ${ABSROOT}/temp/temp11/a
-echo 'Data-b' >  ${ABSROOT}/temp/temp11/b
-echo 'c' >  ${ABSROOT}/temp/temp11/c
-echo 'd' >  ${ABSROOT}/temp/temp11/d
-echo 'a'>>${ABSROOT}/temp/temp11/.ignores
-echo -e 'b\nc' >> ${ABSROOT}/temp/temp11/.ignores
-echotest "$( actively )"
+touch $TEMPDIR/.token
+actively
+echo ${SIMPLE_PASSWORD} | grep --quiet $usepass
+iisr "$? -eq 0"
 huali
 
-#the 2nd test
-echotest "the 2nd test: has a .token file (the 'done' file has removed)."
-if [ -f "${ABSROOT}/temp/temp11/.done" ];then
-	rm "${ABSROOT}/temp/temp11/.done"
-fi
-echo "c" > ${ABSROOT}/temp/temp11/.ignores
-# invoking now! (must choice 1)
-actively
-# successfully?
+# 2nd test
+echotest "2nd test.if got expected file(s)?"
+ls ${UPLOADS}
+
+ls ${UPLOADS}/*data | grep --silent "encoded_a.file.data"
+# because 'a.file' be ignored,so below will raise a error.
+iisr "$? -ne 0"
+
+ls ${UPLOADS}/*data | grep --silent "encoded_b.file.data"
 iisr "$? -eq 0"
-# has result file(s)?
-set $( ls ${UPLOADS}/encoded_*data )
-# {a,b,c,d}.txt and c.txt in '.ignores'.
-iisr "$# -eq 3"
 huali
 
-# the 3rd test
-echotest "the 3rd test:can usepass be a odd name?"
-if [ -f "${ABSROOT}/temp/temp11/.done" ];then
-	rm "${ABSROOT}/temp/temp11/.done"
-fi
-# invoing!
-actively
-# successfully?
-iisr "$? -eq 0"
-# usepass now=?
-echotest "\$usepass==$usepass"
-echo $SIMPLE_PASSWORD | grep --silent "$usepass"
-iisr "$? -eq 0"
-
-#house keeping
-rm -rf ${ABSROOT}/temp/temp11/
-find ${UPLOADS} -type f -name "encoded*data" -exec rm {} \;
+# home keeping
+rm -rf $TEMPDIR
+rm -rf ${UPLOADS}/*data
+rm -rf ${UPLOADS}/*flag
