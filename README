@@ -6,7 +6,7 @@ wrriten by Alan Dershowitz.
 2015-11-1
 i found the 'DEBUG' is sipirt of debugging.
 a test-func can be a diretly func,or a 2+ layer invokes func,
-tonight i invoke 'actively.sh',but not gave good result,why,because in its-invoking func -- help_of_find()
+tonight i invoke 'actively.sh',but not gave good result,why,because in its-invoking func -- help_find_dot_token()
 has a [[ $DEBUG > 1 ]] && echotest "something..."
 the 2+ layer invokes func -- actively.sh,can not display the bottom func's echo(stdout) right now,instead,it
 display the 2+ layer output,after whole return,then show the before msg from boottom func's output.
@@ -73,7 +73,7 @@ checkvalidor.sh
 	is a exists dir,
 	has a .token
 	Not have a done file.
-help_of_find.sh
+help_find_dot_token.sh(old name help_of_find)
 	no argument.
 	return "No Way" if can not find any ".token" file.
 	else,return the listname.

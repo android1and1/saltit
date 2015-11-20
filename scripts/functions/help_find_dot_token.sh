@@ -1,6 +1,6 @@
 #!/bin/bash
-# filename help_of_find
-function help_of_find(){
+# filename help_find_dot_token
+function help_find_dot_token(){
 	# this helpful func return a dir name.
 	# fatastic,only one time wrriten it,no error!
 	# only find "../.token" file.

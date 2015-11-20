@@ -4,7 +4,7 @@
 # actively.sh's actively()==saltit.sh's main()(means:delete old contents of saltit.sh,let it be a soft link of this.)
 function actively(){
 	# results keeps into the variable "founds"
-	founds=$( help_of_find )
+	founds=$( help_find_dot_token )
 	if [ "$founds" = "No Way!" ];then
 		echo "need uploading directory,has no found."
 		return 2
