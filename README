@@ -109,10 +109,19 @@ offsalteach.sh
 1,dont rely checking arguments length,in dirctly layer(test the base function),arguments length will tell us 
 if the function received hoped arguments,but in 2+ layer invokes,first argument has changed,arguments length will
 add 1.
+2,in conf/abs.conf(in fact,it is a .sh file),i replace the unix 'seq()' for mingw enviroment,rember two facts,one is the exceed range more 1 than unix's,means seq 1 10 will get '1 2 3 4 5 6 7 8 9 10',NOT '1 2 3 4 5 6 7 8 9';two,only accept $1 and $2,because we only use in our project here.
 
 [skill1]
+	in 'MinGW+Win' env,a small,small problem exists,today when i debug my 'upload_all_except_ignores' func,i pre push some files,via:
+		touch {a,b,c,d,A,B,C,D}.txt
+	but at last i found the fact,in 'MinGW+Win' env,"a.txt==A.txt",so,above command only get 4 files {a,b,c,d}.txt.
+	replace,i rewrite this part:
+		touch a{1,2,3,4,5,6,7,8}.txt
+		there are two abivous parts,odd order name file:a1.txt,a3.txt,a5...and evens.
+[skill2]
 in 'scripts/tests/test_actively.sh':
 set $( ls ${UPLOADS}/encoded_*data )
+(then)
 echo $#
 means:
 1> bullitin command:set(no optional),give a list of arguments,sample:

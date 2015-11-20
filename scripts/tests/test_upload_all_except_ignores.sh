@@ -20,38 +20,21 @@ huali
 
 echotest "2nd test:real files,has .token,no .done"
 # make a temprary dir
-TEMPD="$ABSROOT""/iwantupload"
+TEMPD="$ABSROOT""/temp/iwantupload"
 mkdir -p "$TEMPD"	
 touch "$TEMPD""/.token"
-touch "$TEMPD""/"{a,b,c,d,A,B,C,D}.txt
+touch $TEMPD/file{1,2,3,4,5,6,7,8}.txt
 touch "$TEMPD"/.ignores 
-echo "a.txt A.txt" > "$TEMPD""/.ignores"
-echotest "$(upload_all_except_ignores $TEMPD)"
-exit
-huali
-# the 4th test
-echotest "the 4th test:last test leave a .done token file,so,func:checkvalidor will says it not a good dir."
-checkvalidor "$TEMPD"
-iisr "$? -eq 20"
-# yes,it not work again,but if we remove the ./.done?
-rm "$TEMPD"/.done
-checkvalidor "$TEMPD"
-iisr "$? -eq 0"
-# not forget 'huali'
+result_files=$(upload_all_except_ignores $TEMPD)
+iisl "$result_files" "*file7.txt*" 
 huali
 
-# the 5th test
-echotest "the '5TH TEST',remove .done,then invoke again(will work)."
-echo ''>"$TEMPD""/.ignores"
-
-# check filelist each name contains whole path,or not?
-upresults=$( upload_all_except_ignores "$TEMPD")
-echotest "\$upresults==${upresults}"
-
-# 6th test 
-#echotest "the 6th test,output whole path."
-# rm "$TEMPD""/.done"
-# upload_all_except_ignores "$TEMP"
+# see if can exclude .ignores
+echotest "3rd test:can ignore files?"
+echo 'file1.txt file3.txt file5.txt file7.txt' > $TEMPD/.ignores
+result_files=$(upload_all_except_ignores $TEMPD)
+iisl "$result_files" "*file7.txt*" 
+huali
 
 # do homekeeping
 rm -rf "$TEMPD"
