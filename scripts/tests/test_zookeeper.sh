@@ -20,16 +20,15 @@ touch $TEMPDIR/.token
 echo 'a.txt' > $TEMPDIR/.ignores
 # create real data file(crypted)
 actively
-
+willbehere="${ABSROOT}/DE_uploads"
 zookeeper $UPLOADS
-ls $DOWNLOADS | grep --quiet "decoded_encoded_c.txt"
+ls  $willbehere | grep --quiet "decoded_encoded_c.txt"
 iisr "$? -eq 0"
-cat $DOWNLOADS/decoded_encoded_c.txt | grep --silent "baby girl"
-iisr "$? -eq 0"
+cat $willbehere/decoded_encoded_c.txt 
 
 # home keeping
 sleep 1
 rm -rf $UPLOADS/*data
 rm -rf $UPLOADS/this.flag
-rm -rf $DOWNLOADS/decoded_*
+rm -rf $willbehere
 rm -rf $TEMPDIR
