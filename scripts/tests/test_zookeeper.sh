@@ -31,7 +31,7 @@ iisr "$? -eq 0"
 #filelists=$(ls $DOWNLOADS)
 #echotest "$filelists"
 # see some lines
-#tail ${DOWNLOADS}/deco*
+tail ${DOWNLOADS}/deco*
 huali
 
 #echotest "2nd test..."

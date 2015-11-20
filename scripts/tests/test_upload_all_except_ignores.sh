@@ -12,24 +12,13 @@ project_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 # disable each func's debug info.
 DEBUG=0
 	
-# first ,client(programer) forgot append the dir-argument
-echotest "1st test,forget \$1 argument."
-upload_all_except_ignores
-
-# it will return and show why it failure
-# try again.
-huali
-
-# second time,client forgot the real path name,he input
 # a no exists directory.
-echotest "2nd test:give a no-exists dir name."
+echotest "1st test:give a no-exists dir name."
 upload_all_except_ignores ${ABSROOT}/temp/nothisdir 
-
 # and it failure.try again
 huali
 
-# 3rd test(real test)
-echotest "3rd test:real files,has .token,no .done"
+echotest "2nd test:real files,has .token,no .done"
 # make a temprary dir
 TEMPD="$ABSROOT""/iwantupload"
 mkdir -p "$TEMPD"	
@@ -37,9 +26,9 @@ touch "$TEMPD""/.token"
 touch "$TEMPD""/"{a,b,c,d,A,B,C,D}.txt
 touch "$TEMPD"/.ignores 
 echo "a.txt A.txt" > "$TEMPD""/.ignores"
-upload_all_except_ignores "$TEMPD"
+echotest "$(upload_all_except_ignores $TEMPD)"
+exit
 huali
-
 # the 4th test
 echotest "the 4th test:last test leave a .done token file,so,func:checkvalidor will says it not a good dir."
 checkvalidor "$TEMPD"

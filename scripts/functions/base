@@ -50,7 +50,23 @@ function iisr(){
 		echo -e  "\033[1;31m::ERROR:: $1\033[0m" 
 	fi
 }
-
+# iisl=if i say like
+function iisl(){
+	# iisl()'s arguments has 2
+	# $1 is a subj within expression 'left',and $2 is 'right',means $1 == $2
+	# $1,and $2 and symbols,construct a assertion.
+	if test $# -ne 2;then
+		echo Bad Expression Please Check
+		exit 2
+	fi
+	if [[ $1 == $2 ]] 
+	then
+		echo "::TRUE:: ""$1==$2" 
+	else
+	# add colorfully text
+		echo -e  "\033[1;31m::ERROR:: $1==$2\033[0m" 
+	fi
+}
 
 #invoke include method now.
 include_all

@@ -120,3 +120,8 @@ means:
 	echo $1
 	>> a
 2> after invokes 'set' command,then,we can measure argument's length,in this test case,it is 3(a,b,d.txt).
+
+3> iisl and iisr
+	in file:scripts/functions/base,there are two assertional func.
+	iisl:if i say like,its $1 is a regex expression's "left" part,and $2 is the "right" part.
+		notice that,iisl's $1 and $2 must be a string,means it should quoted must often it has 'space' between some words.

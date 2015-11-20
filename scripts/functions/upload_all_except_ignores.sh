@@ -17,12 +17,13 @@ function upload_all_except_ignores(){
 	declare -a alls
 
 
-	alls=( $( ls "$1" ) )
+	alls=( $( ls "$1" 2>/dev/null) )
+	[[ $DEBUG > 1 ]] && echo '[func uploadXXX said +] $alls=='"${alls[@]}."
 
 	if test -f "$1"/.ignores
 	then
 		ignores=( `cat "$1"/.ignores` )
-		[[ $DEBUG > 2 ]] && echo "[function upload_all_except_ignores said] \$ignores==${ignores}"
+		[[ $DEBUG > 1 ]] && echo "[function upload_all_except_ignores said] \$ignores==${ignores}"
 		# run loop for match each ignore.	
 		let outmax="${#alls[@]}-1"
 		if test $DEBUG -gt 1;then
@@ -34,14 +35,16 @@ function upload_all_except_ignores(){
 				break
 			fi
 			let innermax=${#ignores[@]}-1
+
 			if test $DEBUG -gt 1;then
-				echotest "INNERMAX==""$innermax"
+				echo "[func upload_XXX said + ] INNERMAX==""$innermax"
 			fi
+
 			for ii in $( seq 0 $innermax )	
 			do
-				if [[ ${alls[$i]} == ${ignores[$ii]} ]]
+				test $DEBUG -gt 1 && echo "[func upload_all_except_ignores said +] \$alls[i]:\$ignores[ii] --- ${alls[$i]}:${ignores[$ii]}" 
+				if [[ "${alls[$i]}" == "${ignores[$ii]}" ]]
 				then
-					test $DEBUG -gt 1 && echotest "\$all[i]:\$ignores[ii] ---${alls[$i]}:${ignores[$ii]}" 
 					unset alls[i]
 				fi
 			done
