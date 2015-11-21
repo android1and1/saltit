@@ -4,6 +4,7 @@
 # the famous quartet.
 project_dir=$( cd $( dirname $0 ) && cd ../../ && pwd -P )
 . $project_dir/conf/abs.conf
+. $project_dir/conf/options.conf
 . ${FUNCPATH}/base
 
 # first test 

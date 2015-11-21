@@ -27,7 +27,7 @@ echotest "3nd test,for link type."
 ln -s ${FUNCPATH}/abigfile ${FUNCPATH}/link_to_abigfile
 thesize="$(tellsize ${FUNCPATH}/link_to_abigfile)"
 #test "$thesize" = "more" && echo "::TRUE:: ""${thesize}=""more" || echo "::ERROR:: ""${thesize}=""more"
-iisr "'$thesize' = 'more'"
+iisr "'$thesize' = 'less'"
 
 # home keeping
 rm -rf ${FUNCPATH}/link_to_abigfile
