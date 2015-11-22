@@ -1,5 +1,5 @@
 #!/bin/bash
-# filename test_unsaltit.sh
+# filename test_unsaltit
 
 # first of first,include abs root(directory) name.
 # then start the famous 'The Quartet'.
@@ -29,7 +29,7 @@ sleep 1
 # first test
 echotest "1st test,can run at last?"
 # because at line no.7 there is a "cd ../../" means we are at working dir:saltit.
-./scripts/unsaltit.sh 
+./scripts/unsaltit 
 iisr "$? -eq 0"
 
 # second test
