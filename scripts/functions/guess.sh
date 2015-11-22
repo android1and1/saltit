@@ -6,7 +6,8 @@ function guess(){
 	# $1 is a token-file,made after client encoded some files.
 	for i in ${SIMPLE_PASSWORD}
 	do
-		letbe=`openssl enc -d -"$ALGORITHM" -in $1 -kfile ${ABSROOT}/share/md5s/md5sum_"$i" 2>/dev/null`
+		# guess only use algorithm -- aes256,but encrypt files can use else ,example aes192..etc.
+		letbe=`openssl enc -d -aes256 -in $1 -kfile ${ABSROOT}/share/md5s/md5sum_"$i" 2>/dev/null`
 		if [[ ${letbe} == 'okay' ]]
 		then
 			echo $i

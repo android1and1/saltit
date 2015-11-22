@@ -1,0 +1,27 @@
+#!/bin/bash
+# filename unsaltit.sh
+
+# first of first,include abs root(directory) name.
+# then start the famous 'The Quartet'.
+# no like other test_XXX,the root dir is differen.
+
+project_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
+. $project_dir/saltit/conf/abs.conf
+. $project_dir/saltit/conf/options.conf
+. ${FUNCPATH}/base 2>/dev/null
+
+# disable all debug infomations of each function.
+DEBUG=0
+
+# got be treated dir.
+betreat=$( help_find_dot_flag )
+if [ $betreat = "No Way" ];then
+	echo no valid directory now\.
+	return 1
+fi
+
+zookeeper $betreat
+
+echo '[unsaltit said +] Done.'
+
+
