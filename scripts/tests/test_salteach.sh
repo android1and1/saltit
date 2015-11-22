@@ -36,10 +36,10 @@ fi
 echotest "4th test: handle once and once.."
 salteach "${FUNCPATH}/base" "02"
 salteach "${FUNCPATH}/checkvalidor.sh" "02"
-ls ${UPLOADS}
-sleep 1  # give me a chance see what is in dir.
-ls ${FUNCPATH} # give me a chance see the origin file:base,if it still exists?
-sleep 1
+ls -A ${UPLOADS}
+sleep 5  # give me a chance see what is in dir.
+ls -A ${FUNCPATH} # give me a chance see the origin file:base,if it still exists?
+sleep 5
 
 # do some house keeping
 rm -rf ${UPLOADS}/*

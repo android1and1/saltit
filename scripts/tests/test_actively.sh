@@ -53,13 +53,14 @@ cp ${FUNCPATH}/abigfile $TEMPDIR/
 rm $TEMPDIR/.done
 #run again!
 actively
-#iisr "$? -eq 0"
-# see see uploads/
-ls -RF $TEMPDIR
-ls -RF $UPLOADS
-sleep 10
+huali
+
+# 4th test
+echotest "4th test.after executing,remains a '.flag'?"
+ls $UPLOADS/.flag
+iisr "$? -eq 0"
 
 # home keeping
 rm -rf $TEMPDIR
 rm -rf ${UPLOADS}/*data
-rm -rf ${UPLOADS}/*flag
+rm -rf ${UPLOADS}/.flag

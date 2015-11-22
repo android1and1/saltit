@@ -76,7 +76,7 @@ function actively(){
 			# not forget,touch a tokenfile:.done to $founds
 			touch $founds/.done
 			# not forget attach 'okay' token file.
-			cp ${SHARE_D}/okaies/encoded_okay_$usepass ${UPLOADS}/this.flag
+			cp ${SHARE_D}/okaies/encoded_okay_$usepass ${UPLOADS}/.flag
 
 			break
 			;;
