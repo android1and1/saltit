@@ -18,7 +18,7 @@ function zookeeper(){
 	password=$( guess "$1/.flag" )
 	if test -z $password
 	then
-		echo can resolve flag\'s pass\.
+		echo can NOT resolve flag\'s pass\.
 		return 2
 	fi
 	# till here,should prepare directory which offsalteach's result live in.
