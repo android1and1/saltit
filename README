@@ -23,6 +23,17 @@ DEBUG=0
 i mean setup a 'DEBUG' in 2+ layer test-func,can overide echo event before.
 ...
 
+version new
+today found a mistoken ,because today i move my project to a pc ,how long i have not work on it.
+its a old pc with mirosoft win7 os.
+after git clone,i can not run any test,so it must because the conf/abs.conf,the first gate of whole.
+run 'bash -x conf/abs.conf' ,found the problem core -- 'uname -r' dont display any 'Administrator' strings?!
+some while i know why it be,because recently upgrade this pc.
+fixed it with this line:
+	[[ unamedispaly == *MICRO-ULT1M8* ]];then
+all is right then.
+
+
 [purpose]
 encoded local datas,upload to cloud server.
 user just need remember one simple password,example:"1",after download encoded-datas and decodeding them.
