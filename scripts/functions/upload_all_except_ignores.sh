@@ -54,6 +54,11 @@ function upload_all_except_ignores(){
 	[[ $DEBUG -gt 1 ]] && echo [func:upload_all_except_ignores said +] after unset: ${alls[@]}
 	for eachresultfile in ${alls[@]}
 	do
+		# in the latest step,remove -d type pathname
+		# we add this if..fi logo for unavoid client forgot put -d type pathname into .ignores.
+		if [ -d "$1""/""${eachresultfile}" ];then
+			continue
+		fi
 		echo "$1""/""${eachresultfile}"
 	done
 

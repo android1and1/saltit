@@ -21,6 +21,7 @@ DEBUG=0
 (then do before)
 
 i mean setup a 'DEBUG' in 2+ layer test-func,can overide echo event before.
+...
 
 [purpose]
 encoded local datas,upload to cloud server.
@@ -93,6 +94,8 @@ upload_all_except_ignores.sh
 	echo to stdout a warnning msg if the dir has a '.done' file,
 	in this case,touch a '.done' file at last,
 	echo to stdout a list(filenames) if all is right.
+	# 2015-11-23 found -d type error.
+	before that day,the func can not handle while ls $1 has one or more dir,add a if..fi logo fixed it.
 
 salteach.sh
 	$1 is a valid file,no more than 4M(templary defination)

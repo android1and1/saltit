@@ -50,5 +50,11 @@ echo ${result_files} | grep --silent ".aline"
 iisr "$? -eq 1"
 huali
 
+
+echotest "6th test:what about .prefix files?"
+mkdir -p "$TEMPD""/""hasAdirTwo""/"
+result_files=$(upload_all_except_ignores $TEMPD)
+echo $result_files | grep --quiet "hasAdirTwo"
+iisr "$? -eq 1"
 # do homekeeping
 rm -rf "$TEMPD"
