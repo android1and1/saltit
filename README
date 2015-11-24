@@ -23,6 +23,8 @@ DEBUG=0
 i mean setup a 'DEBUG' in 2+ layer test-func,can overide echo event before.
 ...
 
+2015-11-23 pc version test pass.adjust some details.
+
 [purpose]
 encoded local datas,upload to cloud server.
 user just need remember one simple password,example:"1",after download encoded-datas and decodeding them.

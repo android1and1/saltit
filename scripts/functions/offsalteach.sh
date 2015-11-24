@@ -26,5 +26,5 @@ function offsalteach(){
 
 	# new a dir from $1(dir)
 	NEWDIR="$dirpathstr""/DE_""$dirbasename"
-	openssl enc -d -"$ALGORITHM" -in $1 -kfile "${SHARE_D}""/md5s/md5sum_""$password" -out "${NEWDIR}""/decoded_""$essential1" 2>${DOWNLOADS}/stdout.error
+	openssl enc -d -"$ALGORITHM" -in $1 -kfile "${SHARE_D}""/md5s/md5sum_""$password" -out "${NEWDIR}""/decoded_""$essential1" 2>${NEWDIR}/stdout.error
 }
