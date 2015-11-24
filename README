@@ -33,7 +33,6 @@ fixed it with this line:
 	[[ unamedispaly == *MICRO-ULT1M8* ]];then
 all is right then.
 
-
 [purpose]
 encoded local datas,upload to cloud server.
 user just need remember one simple password,example:"1",after download encoded-datas and decodeding them.
