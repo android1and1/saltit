@@ -19,9 +19,9 @@ function tooclose(){
 		[[ $LEVEL < 2 ]] && echo 'start=='$start_index' ;to_index=='"$to_index"
 		for i in $(seq $start_index ${to_index}) 
 		do
-			elem=${records[$i]}
+			elem="${records[$i]}"
 			[[ $LEVEL < 2 ]] && echo elem==$elem \$1==$1
-			if [ $1 = $elem ];then
+			if [ "$1" = "$elem" ];then
 				[[ $LEVEL < 2 ]] && echo 'test $1==$elem,will return 0(True).'
 				return 0
 			fi
