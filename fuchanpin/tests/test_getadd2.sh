@@ -27,17 +27,23 @@ do
 	echo '-------  '"$i"'  ---------'
 	getadd2
 done
+
+echo -e "\nnow array contents:  \n"
+echo "${records[@]}"
 iisr "$ordernum -eq 13"
-iisr "${#records[@]} -eq 13"
-echo "now array contents:  "${records[@]}
-huali
+iisr "$ordernum -eq 13"
 
 # 3rd
-echotest "3rd test,more,,and more"
-for i in {1..100}
-do
-	getadd2 2>&1 1>/dev/null
-done
-echotest "da jie ju"
-echo ${records[@]}
+#echotest "3rd test,a range can reachable?"
+#for i in {1..100}
+#do
+#	item=$(getadd2)
+#	head=$(echo $item | cut -d '+' -f 1)
+#	tail=$(echo $item | cut -d '+' -f 2)
+#	iisr "$head -le 10 -a $tail -le 10"
+#done
 
+
+# home keeping
+records=()
+ordernum=0

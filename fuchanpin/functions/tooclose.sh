@@ -14,12 +14,13 @@ function tooclose(){
 		done
 	else	
 		[[ $LEVEL < 2 ]] && echo 'till else case' 
-		let "start_index=${#records[@]}-10"
-		let "to_index=${#records[@]}-1"
-		[[ $LEVEL < 2 ]] && echo 'start=='$start_index' ;to_index=='"$to_index"
-		for i in $(seq $start_index ${to_index}) 
+		max=${#records[@]}
+		let "start_index=$max-9"
+		let "end_index=$max-1"
+		[[ $LEVEL < 2 ]] && echo 'start=='$start_index' ;end_index=='"$end_index"
+		for i in $(seq $start_index $end_index) 
 		do
-			elem="${records[$i]}"
+			elem=${records["$i"]}
 			[[ $LEVEL < 2 ]] && echo elem==$elem \$1==$1
 			if [ "$1" = "$elem" ];then
 				[[ $LEVEL < 2 ]] && echo 'test $1==$elem,will return 0(True).'

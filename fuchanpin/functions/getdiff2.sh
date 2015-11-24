@@ -1,23 +1,22 @@
 #!/bin/bash
-DEBUG=2
-
+# filename : fuchanpin/functions/getdiff2.sh
 function getdiff2(){
-	declare -i a=$(random 0 20)
-	declare -i b=$(random 0 20)
-	if [ $a -lt $b ];then
-		item="$b""-""$a"
-	else
-		item="$a""-""$b"	
-	fi
-	tooclose "$item"
-	if test $? -eq 1;then
-		getdiff2
-	fi
-	histo[$ordernum]=$item
-	((ordernum++))
-	if [ $DELTA -lt 9 ];then
-		((DELTA++))
-	fi	
-
-	echo $item
+	while true
+	do
+		declare -i a=$(random 0 20)
+		declare -i b=$(random 0 20)
+		if [ $a -lt $b ];then
+			item="$b""-""$a"
+		else
+			item="$a""-""$b"	
+		fi
+		tooclose "$item"
+		if [ $? -eq 0 ];then
+			continue
+		fi
+		records["$ordernum"]="$item"
+		((ordernum++))
+		break
+	done
+	echo "$item"
 }
