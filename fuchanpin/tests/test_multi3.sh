@@ -31,7 +31,13 @@ do
 done
 iisr "${#records[@]} -eq 12"
 
+# 3nd 
+echotest "3nd: work with python."
+eval getarr=$(python fuchanpin/help.py)
+echo 'getarr is'
+echo "${getarr[@]}" 
+
 # home keeping
 records=()
-ordernum=0
+ordernum=()
 

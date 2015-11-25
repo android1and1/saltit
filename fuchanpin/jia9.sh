@@ -48,9 +48,13 @@ function jia9(){
 	prenum=$curnum
 }
 echo -en "\n<<<   hi,welcome calculator game.   >>>\n\n"
+start_time=`date +%s`
 while [ $ordernum -le 15 ] 
 do
 	jia9
 done
 echo 'total '"$ordernum"' questions.'
+echo
+end_time=`date +%s`
+echo $(( end_time - start_time ))
 echo 'Done.'

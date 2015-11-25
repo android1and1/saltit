@@ -2,8 +2,8 @@
 # keep some global
 LEVEL=2
 records=()
-ordernum=0
+ordernum=()
 for i in $(ls fuchanpin/functions/*sh)
 do
-	source $i 
+	. $i 
 done

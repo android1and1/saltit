@@ -46,4 +46,4 @@ iisr "$ordernum -eq 13"
 
 # home keeping
 records=()
-ordernum=0
+ordernum=()
