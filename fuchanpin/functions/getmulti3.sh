@@ -1,7 +1,7 @@
 #!/bin/bash
-# filename multi3.sh
+# filename getmulti3.sh
 
-function multi3(){
+function getmulti3(){
 	#
 	while true
 	do
@@ -26,7 +26,7 @@ function multi3(){
 
 		this_expression="$x""$symbola""$y""$symbolb""$z"
 		let multi_resu=$this_expression
-		if test $multi_resu -gt 20;then
+		if test $multi_resu -gt 20 -o $multi_resu -lt 0;then
 			continue
 		fi
 

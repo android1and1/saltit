@@ -1,0 +1,77 @@
+#!/bin/bash
+# filename : interaction # be careful here,if name is '*.sh',will about no-end include
+
+# first of first,include abs root(directory) name.
+# then start 'Quartet Limited'
+# get some global variable -- "FUNCPATH" "ABSROOT" "include_all" "echotest" ..
+project_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
+. $project_dir/conf/abs.conf
+. $project_dir/conf/options.conf
+
+. ${FUNCPATH}/base 2>/dev/null
+
+# include ours
+. fuchanpin/functions/base
+
+# disable all development's debug info.
+LEVEL=4 
+if [ "$#" -ne 1 ];then
+	echo Usage: $0 HOW_MANY_QUESTIONS
+	exit 1
+fi
+
+if [ ! -f fuchanpin/sample_"$1".conf ];then
+	echo No Found fuchanpin/sample_"$1".conf file
+	exit 1
+fi
+
+
+# prepare level
+eval "shufflenum=$( python fuchanpin/help.py $1 )"
+#echo shufflenum array said total ${#shufflenum[@]} items\.
+
+# prepare question(records)
+# $1 is 'HOW_MANY_QUESTIONS'(num)
+letfull fuchanpin/sample_"$1".conf
+
+#echo "${records[@]}"
+#echo records array said total ${#records[@]} items\.
+
+# check if ${#records[@]} equal ${#shufflenum[@]}
+if [ ${#records[@]} -eq 0 ];then
+	echo there is a problem occurs::questions amount is 0\,repair it\.
+	exit 1
+elif [ ${#shufflenum[@]} -eq 0 ];then
+	echo there is a problem occurs::order number is 0\,repair it\.
+	exit 1
+elif [ ${#records[@]} -ne ${#shufflenum[@]} ];then
+	echo there is a problem occurs::order number amount NOT equal question amount\,repair it\.
+	exit 1
+fi
+
+# now start.
+echo '****************************************************************'
+echo '****************************************************************'
+echo '******  Welcome My Friend To A Interesting Calulator Game ******'
+echo '****************************************************************'
+echo '****************************************************************'
+echo
+echo
+echo '----------------------------- use log ----------------------' >> fuchanpin/game.log
+date >> fuchanpin/game.log
+
+start_t=`date +%s`
+for i in $(seq 0 $(( ${#shufflenum[@]} -1 )) )
+do
+	flushindex=${shufflenum[$i]}
+	ask ${records[$flushindex]}
+done
+end_t=`date +%s`
+echo 'total '"${#shufflenum[@]}"' questions.'
+echo 'time = '"$(( end_t - start_t ))"' seconds.'
+# write to game log.
+echo 'total '"${#shufflenum[@]}"' questions.' >> fuchanpin/game.log
+cat fuchanpin/sample_"$1".conf >> fuchanpin/game.log
+echo 'time = '"$(( end_t - start_t ))"' seconds.' >> fuchanpin/game.log
+echo '(end) ----------------------  use log ----------------------' >> fuchanpin/game.log
+echo >> fuchanpin/game.log

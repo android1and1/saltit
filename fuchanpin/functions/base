@@ -1,8 +1,10 @@
 #!/bin/bash
 # keep some global
-LEVEL=2
-records=()
-ordernum=()
+declare -i LEVEL=2
+declare -a records=()
+declare -a shufflenum=()
+declare -i ordernum
+declare -i curnum=1
 for i in $(ls fuchanpin/functions/*sh)
 do
 	. $i 

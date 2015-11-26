@@ -19,7 +19,6 @@ LEVEL=3
 echotest "1st,run once."
 
 
-echo 'total=30' >> fuchanpin/temp/itis.conf
 echo 'diff2=10' >> fuchanpin/temp/itis.conf
 echo 'add2=10' >> fuchanpin/temp/itis.conf
 echo 'multi3=10' >> fuchanpin/temp/itis.conf
@@ -27,29 +26,26 @@ sleep 1
 
 letfull "fuchanpin/temp/itis.conf"
 iisr "$? -eq 0"
-huali
+iisr "! -z $records"
+iisr "${#records[@]} -eq 30"
+
 
 # 2nd
-echotest "2nd,got correctly configurations."
-echo 'total=30' >> fuchanpin/temp/sample.conf
-echo 'add2=10' >> fuchanpin/temp/sample.conf
-echo 'diff2=20' >> fuchanpin/temp/sample.conf
-sleep 1
-letfull "fuchanpin/temp/sample.conf"
-iisr "! -z $records"
-
-# 3rd
-echotest "3rd,really got add2,diff2...?"
-echotest "let us clear sources."
+echotest "2nd,this time,with python."
 records=()
-letfull "fuchanpin/temp/sample.conf"
-let "maxindex=${#records[@]}-1"
-for i in $(seq 0 $maxindex)
-do
-	# display them
-	echo "${records[$i]}"
-	echo "ordernum==$ordernum"
-done
+ordernum=()
+# 55 expressions,so give it as argument1 to py script.
+#eval ordernum=$(python fuchanpin/help.py "55")
+echo 'diff2=15' >> fuchanpin/temp/sample_55.conf
+echo 'add2=20' >> fuchanpin/temp/sample_55.conf
+echo 'multi3=20' >> fuchanpin/temp/sample_55.conf
+sleep 1
+letfull "fuchanpin/temp/sample_55.conf"
+iisr "$? -eq 0"
+iisr "! -z $records"
+iisr "${#records[@]} -eq 55"
+# let us see see
+echo "${records[@]}"
 
 # home keeping
 rm -rf fuchanpin/temp/*

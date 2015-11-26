@@ -1,14 +1,11 @@
 #!/bin/bash
-# filename ./fuchanpin/functions/getadd2.sh
-function getadd2(){
+# filename ./fuchanpin/functions/getadd26.sh
+function getadd26(){
 	while true
 	do 
-		declare -i a=$(random 0 19)
-		declare -i b=$(random 0 19)
+		a=6
+		declare -i b=$(random 0 10)
 		((resu=a+b))
-		if test $resu -gt 20 -o $resu -lt 8;then
-			continue
-		fi
 		item="$a""+""$b"
 		tooclose "$item"
 		if test $? -eq 0;then
