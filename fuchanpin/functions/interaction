@@ -27,7 +27,13 @@ fi
 
 
 # prepare level
-eval "shufflenum=$( python fuchanpin/help.py $1 )"
+# test python version(2.7 or 3.4?) 
+if [[ `uname -a` == *MICROSO-UTR1LM8* ]];then
+	eval "shufflenum=$( python fuchanpin/help34.py $1 )"
+else
+	eval "shufflenum=$( python fuchanpin/help27.py $1 )"
+fi
+	
 #echo shufflenum array said total ${#shufflenum[@]} items\.
 
 # prepare question(records)
