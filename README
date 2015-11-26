@@ -33,6 +33,16 @@ fixed it with this line:
 	[[ unamedispaly == *MICRO-ULT1M8* ]];then
 all is right then.
 
+about 'fuchanpin'
+this calculator game sys is for my little daughter -- Manman.
+it is not good enough to sell to anyone.
+three important fact:
+1) the getaddXXX funcs need refact to a better method
+2) not sure avoid 'too close' problem.
+3) directory and file ,even global variable is solid,not dynamic.
+maybe some time later,i will fix it myself.
+
+
 [purpose]
 encoded local datas,upload to cloud server.
 user just need remember one simple password,example:"1",after download encoded-datas and decodeding them.
