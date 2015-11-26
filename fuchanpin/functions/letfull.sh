@@ -44,6 +44,12 @@ function letfull(){
 				multi3	
 			done
 			;;
+		add2arbi)
+			for i in $(seq 0 $((thisvalue-1)) )
+			do
+				add2arbi	
+			done
+			;;
 		esac
 	done < "$1"
 

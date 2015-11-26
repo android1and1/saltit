@@ -10,13 +10,13 @@ function add2arbi(){
 			continue
 		fi
 		item="$a""+""$b"
-		tooclose "$item"
-		if test $? -eq 0;then
-			continue	
-		fi
+#		tooclose "$item"
+#		if test $? -eq 0;then
+#			continue	
+#		fi
 		records["$ordernum"]="$item"
 		((ordernum++))
 		break
 	done
-	echo "$item" 
+#	echo "$item" 
 }
