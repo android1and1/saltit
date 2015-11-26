@@ -1,7 +1,7 @@
 #!/bin/bash
 # filename getmulti3.sh
 
-function getmulti3(){
+function multi3(){
 	#
 	while true
 	do
@@ -34,5 +34,4 @@ function getmulti3(){
 		let "ordernum+=1"
 		break
 	done
-	echo "$this_expression"
 }

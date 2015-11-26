@@ -1,6 +1,6 @@
 #!/bin/bash
 # filename : fuchanpin/functions/getdiff2.sh
-function getdiff2(){
+function diff2(){
 	while true
 	do
 		declare -i a=$(random 0 20)
@@ -10,13 +10,12 @@ function getdiff2(){
 		else
 			item="$a""-""$b"	
 		fi
-		tooclose "$item"
-		if [ $? -eq 0 ];then
-			continue
-		fi
+#		tooclose "$item"
+#		if [ $? -eq 0 ];then
+#			continue
+#		fi
 		records["$ordernum"]="$item"
 		((ordernum++))
 		break
 	done
-	echo "$item"
 }

@@ -56,6 +56,8 @@ elif [ ${#records[@]} -ne ${#shufflenum[@]} ];then
 fi
 
 # now start.
+echo
+echo
 echo '****************************************************************'
 echo '****************************************************************'
 echo '******  Welcome My Friend To A Interesting Calulator Game ******'

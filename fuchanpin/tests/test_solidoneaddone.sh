@@ -1,5 +1,5 @@
 #!/bin/bash
-# filename : test_ask.sh
+# filename : test_solidoneaddone.sh
 
 # first of first,include abs root(directory) name.
 # then start 'Quartet Limited'
@@ -29,5 +29,5 @@ done
 iisr "${#records[@]} -eq 11"
 huali
 
-
+# the 2nd 
 
