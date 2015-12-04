@@ -32,6 +32,15 @@ function letfull(){
 				solidoneaddone "$option1" "$option2" "$option3" "$option4" 
 			done
 			;;
+		solidfirstdiffone)
+			amount=$( echo "$thisvalue" | cut -d '%' -f 1)
+			option1=$( echo "$thisvalue" | cut -d '%' -f 2)
+			option2=$( echo "$thisvalue" | cut -d '%' -f 3)
+			for i in $(seq 0 $((amount-1)) )
+			do
+				solidfirstdiffone "$option1" "$option2" 
+			done
+			;;
 		diff2)
 			for i in $(seq 0 $((thisvalue-1)) )
 			do
