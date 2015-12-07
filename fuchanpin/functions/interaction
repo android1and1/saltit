@@ -73,7 +73,22 @@ for i in $(seq 0 $(( ${#shufflenum[@]} -1 )) )
 do
 	flushindex=${shufflenum[$i]}
 	ask ${records[$flushindex]}
+	if test $? -ne 0;then
+		break		
+	fi
 done
+
+
+# echo "till here,\$curnum==$curnum and \${#shufflenum[@]}==""${#shufflenum[@]}"
+if [ $curnum -ne $(( 1 + ${#shufflenum[@]} )) ]
+then
+	cat fuchanpin/sample_"$1".conf >> fuchanpin/game.log
+	echo -en '\t\t***** non-finish *****\n' >> fuchanpin/game.log 
+	echo '(end) ----------------------  use log ----------------------' >> fuchanpin/game.log
+	echo 'non-finish'  
+	exit 1
+fi
+
 end_t=`date +%s`
 echo 'total '"${#shufflenum[@]}"' questions.'
 echo 'time = '"$(( end_t - start_t ))"' seconds.'

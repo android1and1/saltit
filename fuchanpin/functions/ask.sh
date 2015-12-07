@@ -11,7 +11,7 @@ function ask(){
 		echo -ne "\nA) ""$clientans""\n"
 		if [ "$clientans" = 'Q' ];then
 			echo 'Quit This Test,Bye.'
-			exit 1
+			return 1
 		fi
 		eval let correctone="${1}"
 		if test "$correctone" -eq "$clientans" 2>/dev/null;then
@@ -25,4 +25,5 @@ function ask(){
 		fi
 	done
 	let "curnum++"	
+	return 0
 }
