@@ -15,7 +15,7 @@ DEBUG=0
 
 # got be treated dir.
 betreat=$( help_find_dot_flag )
-if [ $betreat = "No Way" ];then
+if [ "$betreat" = "No Way" ];then
 	echo no valid directory now\.
 	return 1
 fi

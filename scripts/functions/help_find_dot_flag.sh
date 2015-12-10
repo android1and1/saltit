@@ -5,6 +5,7 @@ function help_find_dot_flag(){
 	# only find "../.flag" file.
 	dirordirs=$( find ${ABSROOT} -type f -regex ".*/\.flag$" -exec dirname {} \; | awk '{print $1;}' )
 	# if count dirs more than one "dir1 dir2...",will lost at the below line,at last show "No Found!"
+	[[ $DEBUG > 1 ]] && echo "$dirordirs"
 	if test -d "$dirordirs"
 	then
 		echo $dirordirs
