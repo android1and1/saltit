@@ -16,8 +16,11 @@ DEBUG=0
 # got be treated dir.
 betreat=$( help_find_dot_flag )
 if [ "$betreat" = "No Way" ];then
-	echo no valid directory now\.
+	echo need AND only need one valid directory which contains flag\.
+	echo you can check details via function:tell_dot
 	return 1
+else
+	echo running decode process..
 fi
 
 zookeeper $betreat

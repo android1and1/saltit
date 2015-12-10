@@ -1,0 +1,28 @@
+#!/bin/bash
+# filename:dotordots (==dot or dots,a 'bian li' function)
+
+# first of first,include abs root(directory) name.
+project_dir=$( cd  $( dirname $0 ) &&  cd ../ && pwd -P )
+. $project_dir/conf/abs.conf
+
+. ${FUNCPATH}/base 2>/dev/null
+
+DEBUG=0
+echo "TELL ME -- WHICH TYPE IT IS?"
+read -p "(flag|token) " typename
+[[ $DEBUG > 1 ]] && echo '[func dotordots said: +]'"\$typename==$typename"
+msg=$(tell_dot $typename)
+[[ $DEBUG > 1 ]] && echo '[func dotordots said: +]'"\$msg==$msg"
+
+
+echo
+echo
+if test -z "$msg";then
+	echo -en '\t** NULL **\n'
+
+else
+	for oneline in $msg
+	do
+		echo -en "\t** ""$oneline"" **\n"
+	done
+fi

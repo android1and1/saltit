@@ -6,7 +6,8 @@ function actively(){
 	# results keeps into the variable "founds"
 	founds=$( help_find_dot_token )
 	if [ "$founds" = "No Way!" ];then
-		echo "need uploading directory,has no found."
+		echo "need AND only need one uploading directory."
+		echo "you can run tell_dot function for checking details."
 		return 2
 	fi
 
