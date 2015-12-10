@@ -43,6 +43,15 @@ three important fact:
 maybe some time later,i will fix it myself.
 
 
+
+2015-12-10 new tag:pleaseuser(==please user(s))
+a first available,consistant version,now hp pc,hp noteboot,apple air,has 3 versins.
+means when i encode from hp pc,decode via apple,will fails.
+so,decide is "HP PC hold the main line of development"
+reason is its fuchanpin is far from anothers,i want expand it more times.
+
+newest ver:tag pleaseuser:
+commit: 5a91a48530f5ec96c0bc7d893d236d33932d649e
 [purpose]
 encoded local datas,upload to cloud server.
 user just need remember one simple password,example:"1",after download encoded-datas and decodeding them.
