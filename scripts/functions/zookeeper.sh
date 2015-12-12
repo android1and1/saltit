@@ -12,14 +12,14 @@ function zookeeper(){
 	if test ! -f $1/.flag
 	then
 		echo flag no found\.
-		return 3
+		return 2
 	fi
 
 	password=$( guess "$1/.flag" )
 	if test -z $password
 	then
 		echo can NOT resolve flag\'s pass\.
-		return 2
+		return 1
 	fi
 	# till here,should prepare directory which offsalteach's result live in.
 
@@ -33,4 +33,7 @@ function zookeeper(){
 	do
 		offsalteach $ii $password
 	done
+	
+	# at last,dont forget remove token file:.flag
+	rm "$1"/.flag
 }

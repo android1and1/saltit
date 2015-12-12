@@ -22,9 +22,4 @@ if [ "$betreat" = "No Way" ];then
 else
 	echo running decode process..
 fi
-
-zookeeper $betreat
-
-echo '[unsaltit said +] Done.'
-
-
+zookeeper $betreat && echo '[unsaltit said +] Done.'
