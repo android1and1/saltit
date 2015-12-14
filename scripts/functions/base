@@ -13,15 +13,6 @@ declare -i DEBUG=2
 FILENAME=$( basename "$0" 2>/dev/null )
 declare DEBUGTITLE="[${FILENAME}  +]"
 
-# all of simple password
-declare SIMPLE_PASSWORD="0 00 01 02 03 10 11 12 13 20 21 22 23 30 31 32 33"
-
-# share dir
-declare SHARE_D="${ABSROOT}/share"
-
-# declare a directory for uploading
-declare UPLOADS="${ABSROOT}/uploads"
-
 function include_all(){
 	for file in ${FUNCPATH}/*\.sh
 	do
