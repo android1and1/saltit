@@ -82,7 +82,8 @@ done
 # echo "till here,\$curnum==$curnum and \${#shufflenum[@]}==""${#shufflenum[@]}"
 if [ $curnum -ne $(( 1 + ${#shufflenum[@]} )) ]
 then
-	cat fuchanpin/sample_"$1".conf >> fuchanpin/game.log
+	#cat fuchanpin/sample_"$1".conf >> fuchanpin/game.log
+	sed -e '/^\ *#/d' -e '/^$/d' fuchanpin/sample_"$1".conf >> fuchanpin/game.log
 	echo -en '\t\t***** non-finish *****\n' >> fuchanpin/game.log 
 	echo '(end) ----------------------  use log ----------------------' >> fuchanpin/game.log
 	echo 'non-finish'  
@@ -94,7 +95,9 @@ echo 'total '"${#shufflenum[@]}"' questions.'
 echo 'time = '"$(( end_t - start_t ))"' seconds.'
 # write to game log.
 echo 'total '"${#shufflenum[@]}"' questions.' >> fuchanpin/game.log
-cat fuchanpin/sample_"$1".conf >> fuchanpin/game.log
+
+#cat fuchanpin/sample_"$1".conf >> fuchanpin/game.log
+sed -e '/^\ *#/d' -e '/^$/d' fuchanpin/sample_"$1".conf >> fuchanpin/game.log
 echo 'time = '"$(( end_t - start_t ))"' seconds.' >> fuchanpin/game.log
 echo '(end) ----------------------  use log ----------------------' >> fuchanpin/game.log
 echo >> fuchanpin/game.log
