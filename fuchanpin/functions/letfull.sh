@@ -53,10 +53,28 @@ function letfull(){
 				multi3	
 			done
 			;;
+		multi3_advance)
+			for i in $(seq 0 $((thisvalue-1)) )
+			do
+				multi3_advance	
+			done
+			;;
+		add2arbi_advance)
+			for i in $(seq 0 $((thisvalue-1)) )
+			do
+				add2arbi_advance	
+			done
+			;;
 		add2arbi)
 			for i in $(seq 0 $((thisvalue-1)) )
 			do
 				add2arbi	
+			done
+			;;
+		bdiffs_advance)
+			for i in $(seq 0 $((thisvalue-1)) )
+			do
+			 	bdiffs_advance	
 			done
 			;;
 		esac

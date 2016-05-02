@@ -27,15 +27,17 @@ fi
 
 
 # prepare level
-# test python version(2.7 or 3.4?) 
+# test python version(2.7 or 3.4? or 3.5?(2016-4 new)) 
+#MINGW64_NT-10.0 DESKTOP-LGV520D 2.5.0(0.295/5/3) 2016-03-31 18:47 x86_64 Msys
 if [[ `uname -a` == *MICROSO-UTR1LM8* ]];then
 	eval "shufflenum=$( python fuchanpin/help34.py $1 )"
+elif [[ `uname -a` == MINGW64_NT* ]];then
+	eval "shufflenum=$( python fuchanpin/help35.py $1 )"
 else
 	eval "shufflenum=$( python fuchanpin/help27.py $1 )"
 fi
 	
 #echo shufflenum array said total ${#shufflenum[@]} items\.
-
 # prepare question(records)
 # $1 is 'HOW_MANY_QUESTIONS'(num)
 letfull fuchanpin/sample_"$1".conf

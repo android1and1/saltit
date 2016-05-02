@@ -1,5 +1,5 @@
 #!/bin/bash
-# filename : fuchanpin/functions/getdiff2.sh
+# filename : fuchanpin/functions/diff2.sh
 function diff2(){
 	while true
 	do

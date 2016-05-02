@@ -57,6 +57,14 @@ encoded local datas,upload to cloud server.
 user just need remember one simple password,example:"1",after download encoded-datas and decodeding them.
 so,let us say saltit is a peronal-prividge protecter.
 
+2016-5-2
+my hp-pc upgrade to win10 64bit,something need fix.
+the first of first one is 'ABSROOT',to my new user's homedir's saltit path,the next is seq() function,
+this version of MINGW need no hacking,so let every declare -f seq() codes goes to old machine's env.
+and one more thing:python3.4 is not exists again,but python3.5.1,so,add a file named 'help35.py',content
+is almost identied by help34.py.
+today,it works.
+
 [usage]
 1)put data files(who need encode) in one directory,add a '.ignores' file,a 'token' file in the directory.
 2) run ~/saltit/scripts/saltit.sh 

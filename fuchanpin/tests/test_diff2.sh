@@ -1,5 +1,5 @@
 #!/bin/bash
-# filename : test_getdiff2.sh
+# filename : testdiff2.sh
 
 # first of first,include abs root(directory) name.
 # then start 'Quartet Limited'
@@ -16,10 +16,10 @@ project_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 LEVEL=2
 
 # 1st
-echotest "1st test,invoke getdiff2 once."
+echotest "1st test,invoke diff2 once."
 echotest "init stat:ordernum==$ordernum records contents: ${records[@]}"
-getdiff2
-echotest "after invoke getdiff2() once,the num of ordernum is ""$ordernum"" ."
+diff2
+echotest "after invoke diff2() once,the num of ordernum is ""$ordernum"" ."
 
 iisr "${#records[@]} -eq 1"
 huali
@@ -27,13 +27,13 @@ huali
 
 
 #2nd
-echotest "2nd test,invoke getdiff2() 12 times."
+echotest "2nd test,invoke diff2() 12 times."
 for i in {1..12}
 do
 	echo '------------ the '"$i"' time ------------'
 	echo ordernum==$ordernum
 	echo '------------      --------------------'
-	getdiff2
+	diff2
 done
 echotest "after invoke 12 times,now ordernum is: ""$ordernum"
 echotest "content of sets are:  "
