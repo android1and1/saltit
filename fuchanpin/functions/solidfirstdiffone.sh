@@ -13,10 +13,10 @@ function solidfirstdiffone(){
 			continue	
 		fi
 		# avoid too close to the previous exp.
-		tooclose "$item"
-		if test $? -eq 0;then
-			continue	
-		fi
+#		tooclose "$item"
+#		if test $? -eq 0;then
+#			continue	
+#		fi
 		records["$ordernum"]="$item"
 		((ordernum++))
 		break
