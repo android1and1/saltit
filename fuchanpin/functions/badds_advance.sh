@@ -1,10 +1,10 @@
 #!/bin/bash
-# filename ./fuchanpin/functions/add2arbi_advance.sh
-function add2arbi_advance(){
+# filename ./fuchanpin/functions/badds_advance.sh
+function badds_advance(){
 	while true
 	do 
-		declare -i a=$(random 0 100)
-		declare -i b=$(random 0 100)
+		declare -i a=$(random 11 97)
+		declare -i b=$(random 2 10)
 		((resu=a+b))
 		if test $resu -gt 100 -o $resu -lt 11;then
 			continue

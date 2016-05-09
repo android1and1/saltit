@@ -47,6 +47,12 @@ function letfull(){
 				diff2
 			done
 			;;
+		diff2_advance)
+			for i in $(seq 0 $((thisvalue-1)) )
+			do
+				diff2_advance
+			done
+			;;
 		multi3)
 			for i in $(seq 0 $((thisvalue-1)) )
 			do
@@ -59,16 +65,22 @@ function letfull(){
 				multi3_advance	
 			done
 			;;
-		add2arbi_advance)
-			for i in $(seq 0 $((thisvalue-1)) )
-			do
-				add2arbi_advance	
-			done
-			;;
 		add2arbi)
 			for i in $(seq 0 $((thisvalue-1)) )
 			do
 				add2arbi	
+			done
+			;;
+		badds_advance)
+			for i in $(seq 0 $((thisvalue-1)) )
+			do
+				badds_advance	
+			done
+			;;
+		add2arbi_advance)
+			for i in $(seq 0 $((thisvalue-1)) )
+			do
+				add2arbi_advance	
 			done
 			;;
 		bdiffs_advance)

@@ -1,10 +1,10 @@
 #!/bin/bash
-# filename : fuchanpin/functions/diff2.sh
-function diff2(){
+# filename : fuchanpin/functions/diff2_advance.sh
+function diff2_advance(){
 	while true
 	do
-		declare -i a=$(random 0 20)
-		declare -i b=$(random 0 20)
+		declare -i a=$(random 1 100)
+		declare -i b=$(random 1 100)
 		if [ $a -lt $b ];then
 			item="$b""-""$a"
 		else
