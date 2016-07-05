@@ -3,6 +3,19 @@ saltit project
 2015-9 ~ 2015-11
 wrriten by Alan Dershowitz.
 
+[Usage version 5.23]
+0, cd saltit project's root dir.
+1, collects all prepared files in one directory ,example 'temp/'.
+2, mkdir ./uploads,it will be a encoded files dir(production).
+3, touch 'temp/.token'
+4, run 'scripts/saltit',step into inter action process.
+
+[trouble shoot 5.23]
+scripts/dotordots function tell you if flag|token file exists.
+. conf/abs.conf ,then echo $ABSROOT,$FUNCPATH,see if env is ready.
+
+
+
 2015-11-1
 i found the 'DEBUG' is sipirt of debugging.
 a test-func can be a diretly func,or a 2+ layer invokes func,
@@ -64,6 +77,12 @@ this version of MINGW need no hacking,so let every declare -f seq() codes goes t
 and one more thing:python3.4 is not exists again,but python3.5.1,so,add a file named 'help35.py',content
 is almost identied by help34.py.
 today,it works.
+
+2016-7-5
+add a dir with wrrintting in .gitignore.
+../fuchanpin/forprint/
+add a func:../fuchanpin/functions/forprint(base on "interaction"),for output a txt file.
+
 
 [usage]
 1)put data files(who need encode) in one directory,add a '.ignores' file,a 'token' file in the directory.
