@@ -72,6 +72,7 @@ do
 	forprinter[$i]="${records[$i]}""=\r\n"
 done
 fromdatesign=`date | tr -d '\ ' | tr  "[:]" "[\.]"`
+test -d "${ABSROOT}""/fuchanpin/forprinter/" || mkdir "${ABSROOT}""/fuchanpin/forprinter/" 
 echo -en "${forprinter[@]}"  > "${ABSROOT}""/fuchanpin/forprinter/printing""${fromdatesign}"".txt"
 
 exit 0

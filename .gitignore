@@ -6,3 +6,4 @@ uploads/*
 fuchanpin/game.log
 fuchanpin/sample*conf
 fuchanpin/forprinter/
+!sample_0.conf

@@ -29,7 +29,7 @@ fi
 # prepare level
 # test python version(2.7 or 3.4? or 3.5?(2016-4 new)) 
 #MINGW64_NT-10.0 DESKTOP-LGV520D 2.5.0(0.295/5/3) 2016-03-31 18:47 x86_64 Msys
-if [[ `uname -a` == *MICROSO-UTR1LM8* ]];then
+if [[ `uname -a` == *MICROSO-UTR1LM8* ]] || [[ `uname -a` == *ALANCOMPUTER* ]];then
 	eval "shufflenum=$( python fuchanpin/help34.py $1 )"
 elif [[ `uname -a` == MINGW64_NT* ]];then
 	eval "shufflenum=$( python fuchanpin/help35.py $1 )"
@@ -56,8 +56,22 @@ elif [ ${#records[@]} -ne ${#shufflenum[@]} ];then
 	echo there is a problem occurs::order number amount NOT equal question amount\,repair it\.
 	exit 1
 fi
+############# output a text,manman need it this vacation. ###############
 
-# now start.
+for i in $(seq 0 $(( ${#records[@]} -1 )) )
+do
+# (for *unix )
+#	forprinter[$i]="${records[$i]}""=\n\n"
+
+# (for windows )
+	forprinter[$i]="${records[$i]}""=\r\n"
+done
+fromdatesign=`date | tr -d '\ ' | tr  "[:]" "[\.]"`
+test -d "${ABSROOT}""/fuchanpin/forprinter/" || mkdir "${ABSROOT}""/fuchanpin/forprinter/" 
+echo -en "${forprinter[@]}"  > "${ABSROOT}""/fuchanpin/forprinter/printing""${fromdatesign}"".txt"
+
+
+# now start interaction.
 echo
 echo
 echo '****************************************************************'
