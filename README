@@ -1,4 +1,4 @@
-saltit project
+##### saltit project #####
 [version]
 2015-9 ~ 2015-11
 wrriten by Alan Dershowitz.
@@ -10,6 +10,11 @@ wrriten by Alan Dershowitz.
 3, touch 'temp/.token'
 4, run 'scripts/saltit',step into inter action process.
 
+[trouble shoot 10.27]
+because too offten migration,i decide change progress off importing of abs.conf.
+first,'vi' or 'gedit' abs.conf,hardcodes your machine(via run 'uname -a') absolute direction name.
+ABSROOT=
+FUNCPATH=$ABSROOT/scripts/functions
 [trouble shoot 5.23]
 scripts/dotordots function tell you if flag|token file exists.
 . conf/abs.conf ,then echo $ABSROOT,$FUNCPATH,see if env is ready.
@@ -193,3 +198,4 @@ means:
 	in file:scripts/functions/base,there are two assertional func.
 	iisl:if i say like,its $1 is a regex expression's "left" part,and $2 is the "right" part.
 		notice that,iisl's $1 and $2 must be a string,means it should quoted must often it has 'space' between some words.
+4> new install be carefull two things,one is conf/abs.conf include the workspace directory,mostly,it should change to fit your pc(laptop?);another is wether Python executable file installed? a new windows os often no preset.so intall it from python.org,choice "setup enviroment variables".

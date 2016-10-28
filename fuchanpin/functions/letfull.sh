@@ -65,6 +65,12 @@ function letfull(){
 				multi3_advance	
 			done
 			;;
+		multi3_advance2)
+			for i in $(seq 0 $((thisvalue-1)) )
+			do
+				multi3_advance2	
+			done
+			;;
 		add2arbi)
 			for i in $(seq 0 $((thisvalue-1)) )
 			do
