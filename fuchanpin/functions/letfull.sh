@@ -45,6 +45,7 @@ function letfull(){
 			for i in $(seq 0 $((thisvalue-1)) )
 			do
 				diff2
+				[[ $LEVEL < 4 ]] && echotest 'from letfull()  :::  '"${records[ordernum]}"
 			done
 			;;
 		diff2_advance)
@@ -93,6 +94,18 @@ function letfull(){
 			for i in $(seq 0 $((thisvalue-1)) )
 			do
 			 	bdiffs_advance	
+			done
+			;;
+		chengjian_step1)
+			for i in $(seq 0 $((thisvalue-1)) )
+			do
+				chengjian_step1
+			done
+			;;
+		chengjia_step1)
+			for i in $(seq 0 $((thisvalue-1)) )
+			do
+				chengjia_step1
 			done
 			;;
 		esac

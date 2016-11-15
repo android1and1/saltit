@@ -19,6 +19,38 @@ FUNCPATH=$ABSROOT/scripts/functions
 scripts/dotordots function tell you if flag|token file exists.
 . conf/abs.conf ,then echo $ABSROOT,$FUNCPATH,see if env is ready.
 
+[about $LEVEL]
+	edited at 2016-11-14
+
+for debugging,i design LEVEL between 1..4
+LEVEL=4
+	normal invokes all functions.detail see codes of 'interaction()'
+	no output debug info,no details.
+
+LEVEL=3
+	within function body.
+	details.
+
+LEVEL=2
+	within function body.
+	very details.
+LEVEL=1
+	only for test function(within scripts/tests/test_XXXX or fuchanpin/tests/test_XXX)
+	very very details.
+
+usage of $LEVEL
+usage:
+		in test function>
+		LEVEL=4
+		in the function be tested>
+		# define 
+		LEVEL=2
+		function name(){
+			...
+			test $LEVEL -gt 1 -a $LEVEL -lt 4 && echotest "your debug info.."
+			
+			...
+		}
 
 
 2015-11-1

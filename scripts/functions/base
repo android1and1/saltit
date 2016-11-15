@@ -30,8 +30,30 @@ function echotest(){
 
 # iisr=if i say right
 function iisr(){
-	#"$1" is a expression ,value is boolean '1' or '0'
-#	if test $1;then
+	# "$1" is a expression ,its value equal boolean 'true' or 'false'.
+	# ensure "$1" is a normal expression,add 2 restrictions.
+	# restriction1:
+	#	only accept one argument.
+	# 
+	if test $# -ne 1;then
+		echo -en  "\n\033[1;31m::ERROR::need (only) one argument. \033[0m\n" 
+		return
+	fi
+
+	# restriction2:
+	#	must contain a '==' symbol.
+	# 	split "$1" (like "3 == 3") from a string to an array
+	thatarray=($1)
+	if test ${#thatarray[@]} -ne 3;then
+		# means it not normal 3 element expression.
+		echo -en  "\n\033[1;31m::ERROR::need a normal expression contains two space symbols. \033[0m\n" 
+		return
+	elif test ${thatarray[1]} != '==';then
+		echo -en  "\n\033[1;31m::ERROR::need a normal expression contains a logic equal symbol. \033[0m\n" 
+		return
+	fi
+		
+		
 	eval "test $1"
 	if test $? -eq 0;then
 		echo -en "\n::TRUE:: ""$1""\n" 
@@ -51,10 +73,10 @@ function iisl(){
 	fi
 	if [[ $1 == $2 ]] 
 	then
-		echo -en "\n::TRUE::\n""$1==$2\n" 
+		echo -en "\n::TRUE::\n(""$1"") == $2\n" 
 	else
 	# add colorfully text
-		echo -en  "\n\033[1;31m::ERROR::\n$1==$2\033[0m\n" 
+		echo -en  "\n\033[1;31m::ERROR::\n (""$1"") == $2\033[0m\n" 
 	fi
 }
 

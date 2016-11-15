@@ -17,7 +17,14 @@ project_dir=$( cd  $( dirname $0 ) &&  cd ../../ && pwd -P )
 # 1st
 echotest "1st : each ordernum is element of array which be output by python help script."
 echotest "init,ordernum==$ordernum"
-eval ordernum=$(python fuchanpin/help.py)
+eval ordernum=$(python fuchanpin/help27.py)
+echotest "now ordernum has ${#ordernum[@]} length."
+echotest "output,see."
+echo "${ordernum[@]}"
+huali
+
+echotest "2nd : instead to py3."
+eval ordernum=$(python fuchanpin/help35.py)
 echotest "now ordernum has ${#ordernum[@]} length."
 echotest "output,see."
 echo "${ordernum[@]}"

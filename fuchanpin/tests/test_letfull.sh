@@ -23,11 +23,22 @@ echo 'solidoneaddone=5%0%11%0%10' >> fuchanpin/temp/sample_of_test_letfull.conf
 echo 'diff2=40' >> fuchanpin/temp/sample_of_test_letfull.conf
 
 letfull "fuchanpin/temp/sample_of_test_letfull.conf"
-iisr "$? -eq 0"
+iisr "$? == 0"
 huali
 
 echotest "2nd : global array is full?"
-iisr "${#records[@]} -eq 50"
+iisr "${#records[@]} == 50"
+huali
+
+#3rd
+echotest "3rd : full of chengjia"
+rm -rf fuchanpin/temp/*
+records=()
+ordernum=0
+#echo 'chengjia_step1=15' >> fuchanpin/temp/sample_of_test_letfull.conf
+echo 'diff2=15' >> fuchanpin/temp/sample_of_test_letfull.conf
+letfull "fuchanpin/temp/sample_of_test_letfull.conf"
+iisr "${#records[@]} == 15"
 huali
 
 # home keeping
