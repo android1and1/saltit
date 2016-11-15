@@ -5,6 +5,9 @@ wrriten by Alan Dershowitz.
 
 2016-11
 big migration.
+turn branch 'saltrepo' to 'master' again,it is normally now ,right?
+do some small task,edited '.git/config',search [branch "master"],replace "merge=refs/heads/saltrepo" to "merge=refs/heads/master",
+ 
 
 [Usage version 5.23]
 0, cd saltit project's root dir.
