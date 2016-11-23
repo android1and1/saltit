@@ -16,8 +16,8 @@ function chengjia_step1(){
 
 	while true
 	do
-		multi1=$(random 2 7)
-		multi2=$(random 2 7)
+		multi1=$(random 2 8)
+		multi2=$(random 2 8)
 		# z not invole multiplication.
 		z=$(random 1 100)
 		multiplication_expression="$multi1""*""$multi2"

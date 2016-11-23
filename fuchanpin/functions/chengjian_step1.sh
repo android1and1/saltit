@@ -11,8 +11,8 @@ function chengjian_step1(){
 		local this_expression
 		local -i res0
 
-		multi1=$(random 2 7)
-		multi2=$(random 2 7)
+		multi1=$(random 2 8)
+		multi2=$(random 2 8)
 		if [[ $multi1 == $multi2 ]];then
 			continue
 		fi
